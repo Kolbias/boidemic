@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cf51d0i4ax2ux"]
+
+[node name="BoidTesting" type="Node2D"]
