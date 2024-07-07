@@ -1,0 +1,17 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1720305057
+boid_testing.tscn::PackedScene::5187302244152552195::1720295334::0::1::::<><>::
+icon.svg::CompressedTexture2D::8359178816873574811::1720295334::1720295363::1::::<><>::
+main.gd::GDScript::-1::1720295334::0::1::::<>Node2D<>::
+main.tscn::PackedScene::4586595535888151790::1720295334::0::1::::<><>::res://main.gd<>uid://d0btghnkyep1t::::res://simulation.tscn
+README.md::TextFile::-1::1720295334::0::1::::<><>::
+simulation.gd::GDScript::-1::1720295334::0::1::::<>Node2D<>::
+simulation.tscn::PackedScene::8917212245642674915::1720295334::0::1::::<><>::res://simulation.gd
+::res://assets/::1720295334
+::res://assets/art/::1720295363
+BoidPlaceholder1.png::CompressedTexture2D::6014226519366113708::1720295334::1720295363::1::::<><>::
+EnemyBoid.png::CompressedTexture2D::1493471097768072852::1720295334::1720295363::1::::<><>::
+PlayerBoid.png::CompressedTexture2D::5128854995334590150::1720295334::1720295363::1::::<><>::
+::res://gameplay/::1720295334
+enemy_boid.gd::GDScript::-1::1720295334::0::1::::<>Area2D<>::
+enemy_boid.tscn::PackedScene::4039573980697957465::1720295334::0::1::::<><>::res://gameplay/enemy_boid.gd<>uid://vjpir5ygonia::::res://assets/art/EnemyBoid.png

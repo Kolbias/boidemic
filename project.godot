@@ -14,6 +14,10 @@ config/name="Boidemic"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[editor]
+
+movie_writer/movie_file="D:/daler/godot/movies/test.avi"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
