@@ -1,3 +1,42 @@
-[gd_scene format=3 uid="uid://cf51d0i4ax2ux"]
+[gd_scene load_steps=3 format=3 uid="uid://cf51d0i4ax2ux"]
+
+[ext_resource type="Script" path="res://Flock.gd" id="1_3x6bo"]
+[ext_resource type="PackedScene" uid="uid://bxs2gtonupruv" path="res://gameplay/enemy_boid.tscn" id="2_gyfif"]
 
 [node name="BoidTesting" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2D"]
+color = Color(1.44392e-06, 0, 0.588753, 1)
+polygon = PackedVector2Array(-3, -2, 1183, -10, 1187, 692, -75, 714, -39, -38)
+
+[node name="Island" type="Area2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Island"]
+color = Color(4.69275e-07, 0.490135, 9.62615e-07, 1)
+polygon = PackedVector2Array(180, 134, 516, 184, 874, 102, 1070, 278, 960, 488, 630, 596, 428, 426, 166, 598, 62, 420, 56, 56)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Island"]
+polygon = PackedVector2Array(54, 54, 178, 130, 510, 182, 878, 100, 1074, 276, 962, 494, 628, 600, 428, 430, 164, 602, 56, 422)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Flock" type="Node2D" parent="."]
+script = ExtResource("1_3x6bo")
+
+[node name="EnemyBoid" parent="." instance=ExtResource("2_gyfif")]
+position = Vector2(500.579, 123.285)
+
+[node name="EnemyBoid2" parent="." instance=ExtResource("2_gyfif")]
+position = Vector2(500.579, 123.285)
+
+[node name="EnemyBoid3" parent="." instance=ExtResource("2_gyfif")]
+position = Vector2(500.579, 123.285)
+
+[node name="EnemyBoid4" parent="." instance=ExtResource("2_gyfif")]
+position = Vector2(500.579, 123.285)
+
+[node name="EnemyBoid5" parent="." instance=ExtResource("2_gyfif")]
+position = Vector2(500.579, 123.285)
