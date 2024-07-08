@@ -1,10 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxs2gtonupruv"]
+[gd_scene load_steps=13 format=3 uid="uid://bxs2gtonupruv"]
 
 [ext_resource type="Script" path="res://gameplay/enemy_boid.gd" id="1_dudh2"]
-[ext_resource type="Texture2D" uid="uid://vjpir5ygonia" path="res://assets/art/EnemyBoid.png" id="2_tqws7"]
+[ext_resource type="Texture2D" uid="uid://yjlbu01ktsk2" path="res://assets/art/anim/enemy/EnemyBoid1.png" id="2_bxpog"]
+[ext_resource type="Texture2D" uid="uid://dk31aywqkqemd" path="res://assets/art/anim/enemy/EnemyBoid2.png" id="3_uvmre"]
+[ext_resource type="Texture2D" uid="uid://clyypss2yv84t" path="res://assets/art/anim/enemy/EnemyBoid3.png" id="4_8bs5x"]
+[ext_resource type="Texture2D" uid="uid://51uxvhwdtgrs" path="res://assets/art/anim/enemy/EnemyBoid4.png" id="5_hugmp"]
+[ext_resource type="Texture2D" uid="uid://8w3m32v8jrde" path="res://assets/art/anim/enemy/EnemyBoid5.png" id="6_glqef"]
+[ext_resource type="Texture2D" uid="uid://bhyfdhf4ypks0" path="res://assets/art/anim/enemy/EnemyBoid6.png" id="7_4i522"]
+[ext_resource type="Texture2D" uid="uid://c0hnijespo6m0" path="res://assets/art/anim/enemy/EnemyBoid7.png" id="8_2qjvv"]
+[ext_resource type="Texture2D" uid="uid://qxskgkmivess" path="res://assets/art/anim/enemy/EnemyBoid8.png" id="9_elknd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhyc2"]
 radius = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yt5wo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bxpog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uvmre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8bs5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hugmp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_glqef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4i522")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2qjvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_elknd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibnge"]
 radius = 74.0
@@ -16,9 +55,11 @@ script = ExtResource("1_dudh2")
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bhyc2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("2_tqws7")
+sprite_frames = SubResource("SpriteFrames_yt5wo")
+autoplay = "default"
+frame_progress = 0.230412
 
 [node name="FieldOfView" type="Area2D" parent="."]
 
