@@ -1,3 +1,5 @@
 res://gameplay/enemy_boid.tscn
-res://gameplay/enemy_boid.gd
 res://boid_testing.tscn
+res://gameplay/enemy_boid.gd
+res://boid_testing.gd
+res://maps/test_map.tscn

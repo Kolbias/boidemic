@@ -50,18 +50,20 @@ radius = 74.0
 
 [node name="EnemyBoid" type="Area2D" groups=["enemyBoid"]]
 rotation = -6.28318
+collision_mask = 128
 script = ExtResource("1_dudh2")
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bhyc2")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="BirdSprite" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_yt5wo")
 autoplay = "default"
 frame_progress = 0.230412
 
 [node name="FieldOfView" type="Area2D" parent="."]
+visible = false
 
 [node name="FOVCollision" type="CollisionPolygon2D" parent="FieldOfView"]
 polygon = PackedVector2Array(0, 0, 19.9996, -71.0001, 36.9997, -64.0002, 52.9997, -52.0003, 63.9998, -37.0003, 70.9999, -19.0004, 74, 0.999626, 71.0001, 22.9996, 62.0002, 41.9997, 52.0003, 52.9997, 36.0003, 64.9998, 20.0004, 71.9999)
@@ -71,25 +73,31 @@ visible = false
 shape = SubResource("CircleShape2D_ibnge")
 disabled = true
 
-[node name="Raycasts" type="Node" parent="."]
+[node name="Raycasts" type="Node2D" parent="."]
+visible = false
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="RightCast" type="RayCast2D" parent="Node2D"]
-target_position = Vector2(20.0004, 70.9999)
+[node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(63.9997, -64.0003)
 collision_mask = 128
 collide_with_areas = true
 
-[node name="ForwardCast" type="RayCast2D" parent="Node2D"]
-target_position = Vector2(74, -0.000375207)
+[node name="RayCast2D2" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(71.9999, -24.0004)
 collision_mask = 128
 collide_with_areas = true
 
-[node name="LeftCast" type="RayCast2D" parent="Node2D"]
-target_position = Vector2(19.9996, -70.0001)
+[node name="RayCast2D3" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(64.0001, 15.9997)
 collision_mask = 128
 collide_with_areas = true
 
+[node name="RayCast2D4" type="RayCast2D" parent="Raycasts"]
+target_position = Vector2(72.0004, 71.9996)
+collision_mask = 128
+collide_with_areas = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="FieldOfView" to="." method="_on_field_of_view_area_entered"]
 [connection signal="area_exited" from="FieldOfView" to="." method="_on_field_of_view_area_exited"]
