@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuba4n3qumv0m"]
+
+[ext_resource type="Script" path="res://gameplay/collectable.gd" id="1_uas4o"]
+[ext_resource type="Texture2D" uid="uid://d2gtutl501j28" path="res://assets/art/Worm.png" id="2_clm36"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dojwh"]
+radius = 8.0
+
+[node name="Worm" type="Area2D"]
+script = ExtResource("1_uas4o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_clm36")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dojwh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

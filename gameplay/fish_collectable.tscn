@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dynti4w2ay8qb"]
+
+[ext_resource type="Script" path="res://gameplay/collectable.gd" id="1_mh0c7"]
+[ext_resource type="Texture2D" uid="uid://d3jpbk55fbcws" path="res://assets/art/Fish.png" id="2_8i0rj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dojwh"]
+radius = 8.0
+
+[node name="Fish" type="Area2D"]
+script = ExtResource("1_mh0c7")
+resource_value = 20
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8i0rj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dojwh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
