@@ -1299,7 +1299,7 @@ visible = false
 collision_layer = 128
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island1"]
-polygon = PackedVector2Array(-208, -232, -208, -96, -184, -16, -120, -24, -96, -48, -96, -240)
+polygon = PackedVector2Array(-208, -232, -208, -96, -224, 96, -112, 160, -120, -24, -96, -48, -80, -32, 248, -152, -8, -128, -96, -240)
 
 [node name="Island2" type="Area2D" parent="Islands" groups=["island"]]
 collision_layer = 128
@@ -1311,10 +1311,10 @@ polygon = PackedVector2Array(-336, 16, -336, 88, -224, 96, -216, 16)
 collision_layer = 128
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island3"]
-polygon = PackedVector2Array(-48, 128, -112, 160, -112, 288, 0, 304, 152, 304, 136, 224, 112, 216, 104, 144, 40, 128)
+polygon = PackedVector2Array(-48, 128, -112, 160, -112, 288, 0, 304, 152, 304, 136, 224, 112, 216, 112, 112, 64, 104, 40, 128)
 
 [node name="Island4" type="Area2D" parent="Islands" groups=["island"]]
 collision_layer = 129
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island4"]
-polygon = PackedVector2Array(-56, -80, -80, -32, -80, 88, 112, 112, 136, 56, 200, 64, 280, 80, 320, -8, 296, -80, 272, -88, 248, -152, 152, -144, 48, -128, 16, -88)
+polygon = PackedVector2Array(-56, -80, -128, -24, -112, 160, 152, 304, 208, 160, 264, 128, 280, 80, 320, -8, 296, -80, 272, -88, 248, -152, 152, -144, 48, -128, 16, -88)
