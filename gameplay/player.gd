@@ -98,3 +98,7 @@ func _on_body_area_entered(area):
 func _on_body_area_exited(area):
 	if area.is_in_group("island"):
 		onLand = false
+
+func collect(item_value):
+	PlayerVariables.resource_amount += item_value
+
