@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbv7wnjyuqjja"]
+[gd_scene load_steps=14 format=3 uid="uid://dbv7wnjyuqjja"]
 
 [ext_resource type="Script" path="res://gameplay/player.gd" id="1_283w4"]
 [ext_resource type="Texture2D" uid="uid://cvaipeqbxdj3u" path="res://assets/art/anim/player/player1.png" id="2_lmp26"]
@@ -48,10 +48,18 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mr3h3"]
+radius = 104.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_283w4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Body" type="Area2D" parent="."]
+
+[node name="BodyCollision" type="CollisionShape2D" parent="Body"]
+shape = SubResource("CircleShape2D_qkhai")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qkhai")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -62,3 +70,18 @@ frame_progress = 0.973376
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="FieldOfView" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FieldOfView"]
+shape = SubResource("CircleShape2D_mr3h3")
+
+[node name="FoodRadar" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FoodRadar"]
+polygon = PackedVector2Array(0, 0, 240, -160, 288, -128, 320, -64, 336, 0, 320, 64, 288, 128, 256, 160)
+
+[connection signal="area_entered" from="Body" to="." method="_on_body_area_entered"]
+[connection signal="area_exited" from="Body" to="." method="_on_body_area_exited"]
+[connection signal="area_entered" from="FieldOfView" to="." method="_on_field_of_view_area_entered"]
+[connection signal="area_exited" from="FieldOfView" to="." method="_on_field_of_view_area_exited"]

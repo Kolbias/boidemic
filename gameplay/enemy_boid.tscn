@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxs2gtonupruv"]
+[gd_scene load_steps=14 format=3 uid="uid://bxs2gtonupruv"]
 
 [ext_resource type="Script" path="res://gameplay/enemy_boid.gd" id="1_dudh2"]
 [ext_resource type="Texture2D" uid="uid://yjlbu01ktsk2" path="res://assets/art/anim/enemy/EnemyBoid1.png" id="2_bxpog"]
@@ -48,6 +48,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibnge"]
 radius = 74.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_txxp4"]
+radius = 72.0
+
 [node name="EnemyBoid" type="Area2D" groups=["enemyBoid"]]
 rotation = -6.28318
 collision_mask = 128
@@ -63,38 +66,18 @@ autoplay = "default"
 frame_progress = 0.230412
 
 [node name="FieldOfView" type="Area2D" parent="."]
-visible = false
 
 [node name="FOVCollision" type="CollisionPolygon2D" parent="FieldOfView"]
-polygon = PackedVector2Array(0, 0, 19.9996, -71.0001, 36.9997, -64.0002, 52.9997, -52.0003, 63.9998, -37.0003, 70.9999, -19.0004, 74, 0.999626, 71.0001, 22.9996, 62.0002, 41.9997, 52.0003, 52.9997, 36.0003, 64.9998, 20.0004, 71.9999)
+polygon = PackedVector2Array(0, 0, 23.9998, -40.0001, 36.9997, -64.0002, 52.9997, -52.0003, 63.9998, -37.0003, 70.9999, -19.0004, 74, 0.999626, 71.0001, 22.9996, 62.0002, 41.9997, 52.0003, 52.9997, 36.0003, 64.9998, 16.0002, 31.9999)
 
 [node name="_TracerShape" type="CollisionShape2D" parent="FieldOfView"]
-visible = false
 shape = SubResource("CircleShape2D_ibnge")
 disabled = true
 
-[node name="Raycasts" type="Node2D" parent="."]
-visible = false
+[node name="Flock" type="Area2D" parent="."]
 
-[node name="RayCast2D" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(63.9997, -64.0003)
-collision_mask = 128
-collide_with_areas = true
-
-[node name="RayCast2D2" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(71.9999, -24.0004)
-collision_mask = 128
-collide_with_areas = true
-
-[node name="RayCast2D3" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(64.0001, 15.9997)
-collision_mask = 128
-collide_with_areas = true
-
-[node name="RayCast2D4" type="RayCast2D" parent="Raycasts"]
-target_position = Vector2(72.0004, 71.9996)
-collision_mask = 128
-collide_with_areas = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flock"]
+shape = SubResource("CircleShape2D_txxp4")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

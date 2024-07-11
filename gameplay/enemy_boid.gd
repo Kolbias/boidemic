@@ -8,6 +8,8 @@ const islands := [
 	]
 
 var following := []
+var player
+
 var vel := Vector2.ZERO
 
 var speed := 15.0
@@ -17,11 +19,16 @@ const maxSpeed := 75.0
 var onLand : bool = false
 var timeAtSea : float = 0
 
+enum state {
+	ATTACKING,
+	FLEEING,
+	WANDERING
+}
+
 var goodBoid = false
 
 @onready var screensize := get_viewport_rect().size
 @onready var boidSize : float = $BodyCollision.shape.radius
-@onready var raycasts := $Raycasts.get_children()
 
 func _ready():
 	var startRotation := randf_range(0, TAU)
@@ -30,7 +37,6 @@ func _ready():
 	vel = Vector2.from_angle(rotation)
 	
 	$BirdSprite.set_frame(randi_range(0,7))
-	
 
 func _physics_process(delta):
 	var separation := Vector2.ZERO
@@ -39,10 +45,11 @@ func _physics_process(delta):
 	
 	if following:
 		var numBirds := following.size()
+		
 		for boid in following:
-			
 			var desiredSeparation = position - boid.position
-			if desiredSeparation.length() < boidSize * 1.5:
+			
+			if desiredSeparation.length() < boidSize * 2:
 				separation += desiredSeparation
 			
 			alignment += boid.vel
@@ -54,19 +61,14 @@ func _physics_process(delta):
 	
 	vel += separation + alignment + cohesion
 	
-	vel = attack(vel)
-	
-	#vel = avoidance(vel)
-	
-	vel += landBias(delta)
+	if !onLand:
+		vel += landBias(delta)
 	
 	vel = vel.normalized()
-
 	
+	vel = attack(vel)
 	
-	var newFacing : float = min(
-		lerp_angle(global_rotation, Vector2.ZERO.angle_to_point(vel), 1),
-		PI / 2)
+	var newFacing = lerp_angle(global_rotation, Vector2.ZERO.angle_to_point(vel), 1)
 	
 	if abs(newFacing - rotation) < PI / 6:
 		speed = min(maxSpeed, speed * 1.1)
@@ -75,7 +77,7 @@ func _physics_process(delta):
 	
 	rotation = newFacing
 	
-	vel = Vector2.from_angle(rotation)
+	vel = Vector2.from_angle(rotation).normalized()
 	
 	position += vel * speed * delta
 	wrapAround()
@@ -83,10 +85,18 @@ func _physics_process(delta):
 func _on_field_of_view_area_entered(area):
 	if area != self and area.is_in_group("enemyBoid"):
 		following.append(area)
+	elif area.is_in_group("player"):
+		player = area
+		if $Flock.get_overlapping_bodies() > 4:
+			state.ATTACKING
+		else:
+			state.FLEEING
 
 func _on_field_of_view_area_exited(area):
 	if area != self and area.is_in_group("enemyBoid"):
 		following.erase(area)
+	elif area.is_in_group("player"):
+		state.WANDERING
 
 func wrapAround():
 	if position.x < 0:
@@ -98,27 +108,16 @@ func wrapAround():
 	if position.y > screensize.y:
 		position.y = 0
 
-func avoidance(currentVel : Vector2) -> Vector2:
-	var newVel = Vector2.ZERO
-	for ray in raycasts:
-		if ray.is_colliding():
-			var angle = Vector2.ONE.rotated(rotation).angle_to_point(ray.get_collision_point())
-			var repulse = 0
-			if goodBoid:
-				print(angle)
-	if newVel:
-		return newVel
-	return currentVel
-
 func attack(currentVel : Vector2) -> Vector2:
-	return currentVel
+	if state.WANDERING: return currentVel
+	
+	var vector : Vector2 = (player.position - position) * 50
+	if state.ATTACKING:
+		return currentVel + vector
+	else:
+		return currentVel - vector
 
 func landBias(delta : float) -> Vector2:
-	if goodBoid: print(timeAtSea)
-	if onLand:
-		timeAtSea = 0
-		return Vector2.ZERO
-	
 	timeAtSea += delta
 	var nearestIsland = islands[0]
 	
@@ -126,7 +125,7 @@ func landBias(delta : float) -> Vector2:
 		if position.distance_to(center) < position.distance_to(nearestIsland):
 			nearestIsland = center
 	
-	return (nearestIsland - position) * timeAtSea
+	return (nearestIsland - position).normalized() * timeAtSea / 10
 
 func _on_area_exited(area):
 	if area.is_in_group("island"):
@@ -135,3 +134,4 @@ func _on_area_exited(area):
 func _on_area_entered(area):
 	if area.is_in_group("island"):
 		onLand = true
+		timeAtSea = 0
