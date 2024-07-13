@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://dnaly1j7lhxnp"
-=======
-uid="uid://mrgcgkh70j0q"
->>>>>>> 48dc5680714cf68986e9da335d7e27f7c3f75122
-path="res://.godot/imported/WaterTileAnimation.png-5eb24ab5301c6bdf882e5a2a017b2017.ctex"
+uid="uid://clulklrhvqpr5"
+path="res://.godot/imported/WaterTileAnimationSingle.png-8b1ce0ad93b4d150b0bb369cc344c1a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/tilesets/WaterTileAnimation.png"
-dest_files=["res://.godot/imported/WaterTileAnimation.png-5eb24ab5301c6bdf882e5a2a017b2017.ctex"]
+source_file="res://assets/art/tilesets/WaterTileAnimationSingle.png"
+dest_files=["res://.godot/imported/WaterTileAnimationSingle.png-8b1ce0ad93b4d150b0bb369cc344c1a8.ctex"]
 
 [params]
 
