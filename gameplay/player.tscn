@@ -69,7 +69,6 @@ autoplay = "default"
 frame_progress = 0.973376
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
 zoom = Vector2(2, 2)
 
 [node name="FieldOfView" type="Area2D" parent="."]

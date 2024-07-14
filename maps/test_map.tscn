@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cm5dltp1grd45"]
 
-[ext_resource type="Texture2D" uid="uid://dnaly1j7lhxnp" path="res://assets/art/tilesets/WaterTileAnimation.png" id="2_5uxpb"]
+[ext_resource type="Texture2D" uid="uid://dqt6sj6w7w1gd" path="res://assets/art/tilesets/WaterTileAnimation.png" id="2_5uxpb"]
 [ext_resource type="Texture2D" uid="uid://d0op4dupxnwut" path="res://assets/art/tilesets/Tileset1.png" id="2_awbwj"]
 [ext_resource type="Texture2D" uid="uid://b8viuij4po6yx" path="res://assets/art/tilesets/ShallowWaterAnimation.png" id="2_fwqi1"]
 

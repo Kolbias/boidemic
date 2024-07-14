@@ -12,6 +12,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="HideMenu" type="Button" parent="Control"]
+layout_mode = 2
+offset_left = 64.0
+offset_top = 91.0
+offset_right = 227.0
+offset_bottom = 122.0
+size_flags_horizontal = 0
+text = "Hide Upgrade Menu"
+
+[node name="ShowMenu" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 128.0
+offset_right = 233.0
+offset_bottom = 159.0
+text = "Show Upgrade Menu"
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -24,12 +42,103 @@ offset_right = -64.0
 offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 text = "Resources: "
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 75
+
+[node name="UpgradePanel" type="Panel" parent="Control/MarginContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UpgradeHbox" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = -81.0
+offset_right = 119.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="VBoxUpgrade1" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
+layout_mode = 2
+text = "Label 1"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
+layout_mode = 2
+text = "Button 1"
+
+[node name="VBoxUpgrade2" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
+layout_mode = 2
+text = "Label 2"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button2" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
+layout_mode = 2
+text = "Button 2"
+
+[node name="VBoxUpgrade3" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+alignment = 1
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
+layout_mode = 2
+text = "Label 3"
+horizontal_alignment = 1
+
+[node name="Panel3" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button3" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
+layout_mode = 2
+text = "Button 3"
+
+[connection signal="pressed" from="Control/HideMenu" to="." method="_on_hide_upgrade_menu_pressed"]
+[connection signal="pressed" from="Control/ShowMenu" to="." method="_on_show_menu_pressed"]
