@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5g1vj7wlwoed"]
+
+[ext_resource type="Script" path="res://gameplay/BirdBrain.gd" id="1_8i8tv"]
+
+[node name="BirdBrain" type="Node"]
+script = ExtResource("1_8i8tv")

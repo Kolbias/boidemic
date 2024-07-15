@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf51d0i4ax2ux"]
+[gd_scene load_steps=4 format=3 uid="uid://cf51d0i4ax2ux"]
 
 [ext_resource type="PackedScene" uid="uid://cm5dltp1grd45" path="res://maps/test_map.tscn" id="1_02wu8"]
 [ext_resource type="Script" path="res://boid_testing.gd" id="1_oq6ed"]
+[ext_resource type="PackedScene" uid="uid://5g1vj7wlwoed" path="res://gameplay/BirdBrain.tscn" id="3_fygdl"]
 
 [node name="BoidTesting" type="Node2D"]
 script = ExtResource("1_oq6ed")
@@ -10,3 +11,5 @@ script = ExtResource("1_oq6ed")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+
+[node name="BirdBrain" parent="." instance=ExtResource("3_fygdl")]

@@ -81,6 +81,7 @@ shape = SubResource("CircleShape2D_mr3h3")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FoodRadar"]
 polygon = PackedVector2Array(0, 0, 240, -160, 288, -128, 320, -64, 336, 0, 320, 64, 288, 128, 256, 160)
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="Body" to="." method="_on_body_area_entered"]
 [connection signal="area_exited" from="Body" to="." method="_on_body_area_exited"]
 [connection signal="area_entered" from="FieldOfView" to="." method="_on_field_of_view_area_entered"]
