@@ -44,6 +44,13 @@ func _ready():
 	blinkTime = PlayerVariables.blink_time
 
 func _physics_process(delta):
+	if pathingState == PathingState.AGGRESSIVE:
+		modulate = Color(1, 0, 0, 1)
+	elif blinkState == BlinkState.BLINK:
+		modulate = Color(0, 0, 1, 1)
+	else:
+		modulate = Color(1, 1, 1, 1)
+	
 	if hp < 1:
 		speed = 0
 	
@@ -151,3 +158,14 @@ func blinkStateManager(duration : float):
 		if blinkStateTimer < 0:
 			blinkState = BlinkState.DEFAULT
 			pathingState = PathingState.DEFAULT
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.pressed:
+		print(event)
+		if blinks > 0:
+			blinks -= 1
+			pathingState = PathingState.AGGRESSIVE
+			blinkStateManager(blinkTime)
+			print("manual blink!")
+		else:
+			print("out of blinks!")

@@ -1,14 +1,5 @@
 res://boid_testing.tscn
 res://gameplay/BirdBrain.gd
-res://quadtree_testing.tscn
-res://quadtree_testing.gd
-res://gameplay/enemy_boid.tscn
 res://gameplay/player.tscn
-res://gameplay/BirdBrain.tscn
-res://boid_testing.gd
-res://gameplay/quadtree.gd
-res://maps/test_map.tscn
-res://gameplay/enemy_boid.gd
 res://gameplay/player.gd
-res://gameplay/PlayerData.tscn
 res://gameplay/player_variables.gd
