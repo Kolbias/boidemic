@@ -1,7 +1,5 @@
 res://boid_testing.tscn
-res://gameplay/enemy_boid.tscn
-res://maps/test_map.tscn
-res://gameplay/enemy_boid.gd
-res://boid_testing.gd
+res://gameplay/BirdBrain.gd
 res://gameplay/player.tscn
 res://gameplay/player.gd
+res://gameplay/player_variables.gd

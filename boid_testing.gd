@@ -2,29 +2,15 @@ extends Node2D
 
 var numBoids := 60
 
+const islands := [
+	Vector2(280, 160),
+	Vector2(170, 370),
+	Vector2(550, 270),
+	Vector2(450, 550)
+]
+
 func _ready():
-	var screensize = get_viewport_rect().size
-	
-	var player : CharacterBody2D = preload("res://gameplay/player.tscn").instantiate()
-	add_child(player)
-	player.position = Vector2(screensize.x / 2, screensize.y / 2)
-	
-	for i in numBoids:
-		var boid : Area2D = preload("res://gameplay/enemy_boid.tscn").instantiate()
-		add_child(boid)
-		
-		var x = randf_range(0, screensize.x)
-		var y = randf_range(0, screensize.y)
-		
-		while Vector2(x, y).distance_to(Vector2(screensize.x / 2, screensize.y / 2)) < 150:
-			x = randf_range(0, screensize.x)
-			y = randf_range(0, screensize.y)
-		
-		boid.position = Vector2(x, y)
-		
-		if i == 1:
-			boid.goodBoid = true
-			boid.modulate = Color(1, 0, 0)
+	pass
 
 func _process(_delta):
 	pass

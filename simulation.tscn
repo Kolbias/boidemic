@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0btghnkyep1t"]
+[gd_scene load_steps=2 format=3 uid="uid://dd7imv0dcx8ki"]
 
-[ext_resource type="Script" path="res://simulation.gd" id="1_vl6su"]
+[sub_resource type="GDScript" id="GDScript_765ac"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="Simulation" type="Node2D"]
-script = ExtResource("1_vl6su")
+script = SubResource("GDScript_765ac")

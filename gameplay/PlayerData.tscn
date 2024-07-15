@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://wfxpjfhgish2"]
+
+[ext_resource type="Script" path="res://gameplay/player_variables.gd" id="1_1lj2b"]
+
+[node name="PlayerData" type="Node"]
+script = ExtResource("1_1lj2b")

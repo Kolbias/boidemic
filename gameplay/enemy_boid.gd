@@ -1,16 +1,13 @@
 extends Area2D
+class_name Enemy_Boid
 
-const islands := [
-	Vector2(280, 160),
-	Vector2(170, 370),
-	Vector2(550, 270),
-	Vector2(450, 550)
-	]
+var islands := [Vector2.ZERO]
 
 var following := []
 var player
 
 var vel := Vector2.ZERO
+var lastNeighborCount := 10
 
 var speed := 15.0
 const minSpeed := 15.0
@@ -26,6 +23,7 @@ enum state {
 }
 
 var goodBoid = false
+var data
 
 @onready var screensize := get_viewport_rect().size
 @onready var boidSize : float = $BodyCollision.shape.radius
@@ -118,6 +116,7 @@ func attack(currentVel : Vector2) -> Vector2:
 		return currentVel - vector
 
 func landBias(delta : float) -> Vector2:
+	if islands.size() == 0: return Vector2.ZERO
 	timeAtSea += delta
 	var nearestIsland = islands[0]
 	
