@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf51d0i4ax2ux"]
+[gd_scene load_steps=7 format=3 uid="uid://cf51d0i4ax2ux"]
 
 [ext_resource type="PackedScene" uid="uid://cm5dltp1grd45" path="res://maps/test_map.tscn" id="1_02wu8"]
 [ext_resource type="Script" path="res://boid_testing.gd" id="1_oq6ed"]
 [ext_resource type="PackedScene" uid="uid://5g1vj7wlwoed" path="res://gameplay/BirdBrain.tscn" id="3_fygdl"]
+[ext_resource type="PackedScene" uid="uid://dynti4w2ay8qb" path="res://gameplay/fish_collectable.tscn" id="4_lp0wp"]
+[ext_resource type="PackedScene" uid="uid://dmwfcx3wdlpxg" path="res://gameplay/mouse_collectable.tscn" id="5_ssoan"]
+[ext_resource type="PackedScene" uid="uid://cuba4n3qumv0m" path="res://gameplay/worm_collectable.tscn" id="6_oiy7o"]
 
 [node name="BoidTesting" type="Node2D"]
 script = ExtResource("1_oq6ed")
@@ -13,3 +16,39 @@ script = ExtResource("1_oq6ed")
 position = Vector2(576, 324)
 
 [node name="BirdBrain" parent="." instance=ExtResource("3_fygdl")]
+
+[node name="Fish" parent="." instance=ExtResource("4_lp0wp")]
+position = Vector2(360, 408)
+
+[node name="Fish2" parent="." instance=ExtResource("4_lp0wp")]
+position = Vector2(656, 400)
+
+[node name="Mouse" parent="." instance=ExtResource("5_ssoan")]
+position = Vector2(520, 304)
+
+[node name="Mouse2" parent="." instance=ExtResource("5_ssoan")]
+position = Vector2(392, 504)
+
+[node name="Mouse3" parent="." instance=ExtResource("5_ssoan")]
+position = Vector2(256, 208)
+
+[node name="Fish3" parent="." instance=ExtResource("4_lp0wp")]
+position = Vector2(656, 552)
+
+[node name="Fish4" parent="." instance=ExtResource("4_lp0wp")]
+position = Vector2(440, 128)
+
+[node name="Fish5" parent="." instance=ExtResource("4_lp0wp")]
+position = Vector2(808, 144)
+
+[node name="Fish6" parent="." instance=ExtResource("4_lp0wp")]
+position = Vector2(168, 512)
+
+[node name="Worm" parent="." instance=ExtResource("6_oiy7o")]
+position = Vector2(496, 512)
+
+[node name="Worm2" parent="." instance=ExtResource("6_oiy7o")]
+position = Vector2(432, 288)
+
+[node name="Worm3" parent="." instance=ExtResource("6_oiy7o")]
+position = Vector2(264, 144)

@@ -8,10 +8,10 @@ const boidConst : PackedScene = preload("res://gameplay/enemy_boid.tscn")
 @onready var screensize = parentScene.get_viewport_rect().size
 @onready var boidTree := Quadtree.new(Rect2(0, 0, screensize.x, screensize.y))
 @onready var playerFog := Quadtree.new(Rect2(0, 0, screensize.x, screensize.y))
-@onready var islands = parentScene.islands
 
-@export var targetNumBoids = 40
-
+var targetNumBoids = PlayerVariables.num_boids
+var firstBoid = true
+var spawnCooldown = 0.0
 var player : CharacterBody2D
 
 enum SpawnState {
@@ -26,7 +26,6 @@ func _ready():
 	player = playerSceneConst.instantiate()
 	parentScene.add_child.call_deferred(player)
 	player.position = screensize / 2
-	player.islands = islands
 	
 	while boidArray.size() < targetNumBoids:
 		var x = randf_range(0, screensize.x)
@@ -36,7 +35,7 @@ func _ready():
 			x = randf_range(0, screensize.x)
 			y = randf_range(0, screensize.y)
 		
-		spawnBoid(Vector2(x, y))
+		spawnBoidInit(Vector2(x, y))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,19 +47,39 @@ func _physics_process(delta):
 	
 	match spawn_state:
 		SpawnState.SPAWNING:
-			pass
+			spawnBoid()
 		SpawnState.CULLING:
-			cullBoids()
-	
+			if spawnCooldown == 0:
+				cullBoids()
+	spawnCooldown = max(0, spawnCooldown - delta)
 
-
-func spawnBoid(point : Vector2):
+func spawnBoidInit(point : Vector2):
 	var newBoid = boidConst.instantiate()
 	parentScene.add_child.call_deferred(newBoid)
 	boidArray.append(newBoid)
 	newBoid.position = point
-	newBoid.islands = islands
+
+func spawnBoid():
+	spawnCooldown = 2.0
+	var islands = PlayerVariables.islands
+	var nearestIsland = islands[0]
+	var pos = player.position
+	for center in islands:
+		if pos.distance_to(center) < pos.distance_to(nearestIsland):
+			nearestIsland = center
+	var newBoid = boidConst.instantiate()
+	parentScene.add_child.call_deferred(newBoid)
+	boidArray.append(newBoid)
+	newBoid.position = nearestIsland
 
 func cullBoids():
-	pass
+	boidArray.sort_custom(boidSort)
+	while boidArray.size() > targetNumBoids:
+		boidArray.back().queue_free()
+		boidArray.pop_back()
 
+func boidSort(a : Enemy_Boid, b : Enemy_Boid):
+	var pos = player.position
+	if a.position.distance_to(pos) > b.position.distance_to(pos):
+		return false
+	return true

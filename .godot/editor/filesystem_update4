@@ -1,5 +1,11 @@
 res://boid_testing.tscn
 res://gameplay/BirdBrain.gd
-res://gameplay/player.tscn
-res://gameplay/player.gd
+res://boid_testing.gd
+res://gameplay/enemy_boid.gd
 res://gameplay/player_variables.gd
+res://gameplay/player.gd
+res://gameplay/collectable.gd
+res://gameplay/player.tscn
+res://maps/test_map.tscn
+res://gameplay/fish_collectable.tscn
+res://gameplay/enemy_boid.tscn
