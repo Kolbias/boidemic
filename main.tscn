@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6l1s8qax00ny"]
+[gd_scene load_steps=5 format=3 uid="uid://b6l1s8qax00ny"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_axfdb"]
-[ext_resource type="PackedScene" uid="uid://d0btghnkyep1t" path="res://simulation.tscn" id="1_xfetn"]
+[ext_resource type="PackedScene" uid="uid://dvx4w44xvlq8g" path="res://maps/main_map.tscn" id="2_dd0l7"]
+[ext_resource type="PackedScene" uid="uid://bfvpt71ravmij" path="res://ui/ui.tscn" id="2_e1q5f"]
+[ext_resource type="PackedScene" uid="uid://dbv7wnjyuqjja" path="res://gameplay/player.tscn" id="2_heofh"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_axfdb")
 
-[node name="Simulation" parent="." instance=ExtResource("1_xfetn")]
+[node name="UI" parent="." instance=ExtResource("2_e1q5f")]
+
+[node name="MainMap" parent="." instance=ExtResource("2_dd0l7")]
+
+[node name="Player" parent="." instance=ExtResource("2_heofh")]
+position = Vector2(1451.48, -257.896)
