@@ -84,3 +84,7 @@ shape = SubResource("CircleShape2D_txxp4")
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="FieldOfView" to="." method="_on_field_of_view_area_entered"]
 [connection signal="area_exited" from="FieldOfView" to="." method="_on_field_of_view_area_exited"]
+[connection signal="body_entered" from="FieldOfView" to="." method="_on_field_of_view_body_entered"]
+[connection signal="area_entered" from="Flock" to="." method="_on_flock_area_entered"]
+[connection signal="area_exited" from="Flock" to="." method="_on_flock_area_exited"]
+[connection signal="body_exited" from="Flock" to="." method="_on_flock_body_exited"]
