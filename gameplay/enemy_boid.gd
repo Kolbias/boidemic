@@ -1,10 +1,12 @@
 extends Area2D
 class_name Enemy_Boid
 
-var islands := [Vector2.ZERO]
+var islands := PlayerVariables.islands
 
 var following := []
+var flock := []
 var player
+var minFlock = PlayerVariables.min_flock
 
 var vel := Vector2.ZERO
 var lastNeighborCount := 10
@@ -15,15 +17,14 @@ const maxSpeed := 75.0
 
 var onLand : bool = false
 var timeAtSea : float = 0
-
-enum state {
+var stance = stanceState.WANDERING
+enum stanceState {
 	ATTACKING,
 	FLEEING,
 	WANDERING
 }
 
 var goodBoid = false
-var data
 
 @onready var screensize := get_viewport_rect().size
 @onready var boidSize : float = $BodyCollision.shape.radius
@@ -37,6 +38,17 @@ func _ready():
 	$BirdSprite.set_frame(randi_range(0,7))
 
 func _physics_process(delta):
+	if goodBoid:
+		print(stance)
+	
+	match stance:
+		stanceState.ATTACKING:
+			modulate = Color(1, 0, 0, 1)
+		stanceState.FLEEING:
+			modulate = Color(0, 0, 1, 1)
+		_:
+			modulate = Color(1, 1, 1, 1)
+	
 	var separation := Vector2.ZERO
 	var alignment := Vector2.ZERO
 	var cohesion := Vector2.ZERO
@@ -64,7 +76,8 @@ func _physics_process(delta):
 	
 	vel = vel.normalized()
 	
-	vel = attack(vel)
+	if player:
+		vel = attack(vel)
 	
 	var newFacing = lerp_angle(global_rotation, Vector2.ZERO.angle_to_point(vel), 1)
 	
@@ -78,39 +91,20 @@ func _physics_process(delta):
 	vel = Vector2.from_angle(rotation).normalized()
 	
 	position += vel * speed * delta
-	wrapAround()
 
 func _on_field_of_view_area_entered(area):
 	if area != self and area.is_in_group("enemyBoid"):
 		following.append(area)
-	elif area.is_in_group("player"):
-		player = area
-		if $Flock.get_overlapping_bodies() > 4:
-			state.ATTACKING
-		else:
-			state.FLEEING
 
 func _on_field_of_view_area_exited(area):
 	if area != self and area.is_in_group("enemyBoid"):
 		following.erase(area)
-	elif area.is_in_group("player"):
-		state.WANDERING
-
-func wrapAround():
-	if position.x < 0:
-		position.x = screensize.x
-	if position.y < 0:
-		position.y = screensize.y
-	if position.x > screensize.x:
-		position.x = 0
-	if position.y > screensize.y:
-		position.y = 0
 
 func attack(currentVel : Vector2) -> Vector2:
-	if state.WANDERING: return currentVel
+	if stance == stanceState.WANDERING: return currentVel
 	
 	var vector : Vector2 = (player.position - position) * 50
-	if state.ATTACKING:
+	if stance == stanceState.ATTACKING:
 		return currentVel + vector
 	else:
 		return currentVel - vector
@@ -134,3 +128,26 @@ func _on_area_entered(area):
 	if area.is_in_group("island"):
 		onLand = true
 		timeAtSea = 0
+
+func _on_flock_area_entered(area):
+	if area != self and area.is_in_group("enemyBoid"):
+		flock.append(area)
+
+func _on_flock_area_exited(area):
+	if area != self and area.is_in_group("enemyBoid"):
+		flock.erase(area)
+
+func _on_field_of_view_body_entered(body):
+	if body.is_in_group("player"):
+		print("see!")
+		player = body
+		if flock.size() > minFlock:
+			stance = stanceState.ATTACKING
+		else:
+			stance = stanceState.FLEEING
+
+
+func _on_flock_body_exited(body):
+	if body.is_in_group("player"):
+		player = null
+		stance = stanceState.WANDERING

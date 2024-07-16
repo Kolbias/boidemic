@@ -5,7 +5,7 @@ var hostiles := []
 var identifiedFood := []
 var onLand : bool = false
 var timeAtSea : float = 0
-var islands := [Vector2.ZERO]
+var islands := PlayerVariables.islands
 
 var vel := Vector2.ZERO
 var speed := 15.0
@@ -78,9 +78,11 @@ func _physics_process(delta):
 	rotation = newFacing
 	
 	vel = Vector2.from_angle(rotation).normalized()
+	var bonus = 1
+	if blinkState == BlinkState.BLINK:
+		bonus = 2
+	position += vel * speed * delta * bonus
 	
-	position += vel * speed * delta
-	wrapAround()
 	blinkStateManager(delta * -1)
 
 func _on_field_of_view_area_entered(area):
@@ -92,16 +94,6 @@ func _on_field_of_view_area_entered(area):
 func _on_field_of_view_area_exited(area):
 	if area.is_in_group("enemyBoid"):
 		hostiles.erase(area)
-
-func wrapAround():
-	if position.x < 0:
-		position.x = screensize.x
-	if position.y < 0:
-		position.y = screensize.y
-	if position.x > screensize.x:
-		position.x = 0
-	if position.y > screensize.y:
-		position.y = 0
 
 func landBias(delta : float) -> Vector2:
 	if islands.size() == 0: return Vector2.ZERO
@@ -119,35 +111,22 @@ func _on_body_area_entered(area):
 		onLand = true
 		timeAtSea = 0
 	elif area.is_in_group("food"):
+		consume(area.resource_value)
 		identifiedFood.erase(area)
+		area.queue_free()
 	elif area.is_in_group("enemyBoid"):
 		if blinkState == BlinkState.DEFAULT:
 			hp -= 1
 			print(hp)
 			blinkStateManager(1)
-		else:
-			print("phew!")
 
 func _on_body_area_exited(area):
 	if area.is_in_group("island"):
 		onLand = false
 
-func collect(item_value):
-	PlayerVariables.resource_amount += item_value
-
 func consume(value : int):
-	pass
-
-func _on_input_event(viewport, event, shape_idx):
-	print(event)
-	if event is InputEventMouseButton:
-		if blinks > 0:
-			blinks -= 1
-			pathingState = PathingState.AGGRESSIVE
-			blinkStateManager(blinkTime)
-			print("manual blink!")
-		else:
-			print("out of blinks!")
+	PlayerVariables.resource_amount += value
+	print(PlayerVariables.resource_amount)
 
 func blinkStateManager(duration : float):
 	if blinkState == BlinkState.DEFAULT and duration > 0:
@@ -166,6 +145,3 @@ func _unhandled_input(event):
 			blinks -= 1
 			pathingState = PathingState.AGGRESSIVE
 			blinkStateManager(blinkTime)
-			print("manual blink!")
-		else:
-			print("out of blinks!")
