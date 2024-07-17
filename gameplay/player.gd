@@ -15,9 +15,11 @@ const viewRect := Rect2(0, 0, 320, 320)
 
 @onready var screensize := get_viewport_rect().size
 @onready var size : float = $BodyCollision.shape.radius
-@onready var fog := Quadtree.new(Rect2(Vector2.ZERO, Vector2(screensize.x, screensize.y)))
+@onready var fog := Quadtree.new(
+	Rect2(Vector2.ZERO, Vector2(screensize.x, screensize.y))
+	)
 
-var hp := 0
+var hp := 0.0
 var blinks := 0
 var blinkTime := 0.0
 
@@ -54,21 +56,31 @@ func _physics_process(delta):
 	if hp < 1:
 		speed = 0
 	
+	#eat known food
+	if identifiedFood:
+		var target = identifiedFood.front()
+		vel += (target.position - position).normalized()
+		
+	else:
+		#look for food
+		pass
+	
+	
 	#avoid enemies
 	if pathingState == PathingState.DEFAULT and hostiles:
 		for enemy in hostiles:
 			var repulsion : Vector2 = (position - enemy.position) / position.distance_squared_to(enemy.position)
 			vel += repulsion
 	
+	#stay on land
 	if !onLand:
 		vel += landBias(delta)
 	
-	#eat known food
-	#look for food
-	
 	vel = vel.normalized()
 	
-	var newFacing = lerp_angle(global_rotation, Vector2.ZERO.angle_to_point(vel), 1)
+	var newFacing = lerp_angle(
+		global_rotation, Vector2.ZERO.angle_to_point(vel), 1
+		)
 	
 	if abs(newFacing - rotation) < PI / 6:
 		speed = min(maxSpeed, speed * 1.1)
@@ -84,12 +96,12 @@ func _physics_process(delta):
 	position += vel * speed * delta * bonus
 	
 	blinkStateManager(delta * -1)
+	hp -= delta
+	print(hp)
 
 func _on_field_of_view_area_entered(area):
 	if area.is_in_group("enemyBoid"):
 		hostiles.append(area)
-	elif area.is_in_group("food"):
-		identifiedFood.append(area)
 
 func _on_field_of_view_area_exited(area):
 	if area.is_in_group("enemyBoid"):
@@ -126,7 +138,7 @@ func _on_body_area_exited(area):
 
 func consume(value : int):
 	PlayerVariables.resource_amount += value
-	print(PlayerVariables.resource_amount)
+	hp += value
 
 func blinkStateManager(duration : float):
 	if blinkState == BlinkState.DEFAULT and duration > 0:
@@ -145,3 +157,15 @@ func _unhandled_input(event):
 			blinks -= 1
 			pathingState = PathingState.AGGRESSIVE
 			blinkStateManager(blinkTime)
+
+func _on_food_radar_area_entered(area):
+	if area.is_in_group("food") and !identifiedFood.has(area):
+		identifiedFood.append(area)
+		identifiedFood.sort_custom(areaSort)
+		print(area)
+
+func areaSort(a : Area2D, b : Area2D):
+	var pos = position
+	if a.position.distance_to(pos) > b.position.distance_to(pos):
+		return false
+	return true
