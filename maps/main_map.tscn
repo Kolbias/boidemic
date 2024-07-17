@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvx4w44xvlq8g"]
+[gd_scene load_steps=11 format=3 uid="uid://dvx4w44xvlq8g"]
 
 [ext_resource type="Texture2D" uid="uid://dqt6sj6w7w1gd" path="res://assets/art/tilesets/WaterTileAnimation.png" id="1_1i7tk"]
 [ext_resource type="Texture2D" uid="uid://b8viuij4po6yx" path="res://assets/art/tilesets/ShallowWaterAnimation.png" id="2_ck01w"]
 [ext_resource type="Texture2D" uid="uid://d0op4dupxnwut" path="res://assets/art/tilesets/Tileset1.png" id="3_y1sgx"]
+[ext_resource type="PackedScene" uid="uid://bxnl516pko0fh" path="res://gameplay/food_spawner.tscn" id="4_vbvff"]
+[ext_resource type="PackedScene" uid="uid://dbv7wnjyuqjja" path="res://gameplay/player.tscn" id="5_x5jwk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t6ky0"]
 texture = ExtResource("1_1i7tk")
@@ -1479,3 +1481,13 @@ polygon = PackedVector2Array(-160, -64, -72, 256, 264, 128, 152, -144)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(144, -192)
 enabled = false
+
+[node name="FoodSpawner" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(520, 56)
+max_foods = 2
+spawn_area_x = 100.0
+spawn_area_y = 100.0
+view_spawn_area = true
+
+[node name="Player" parent="." instance=ExtResource("5_x5jwk")]
+position = Vector2(864, -152)
