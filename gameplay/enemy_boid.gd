@@ -91,6 +91,7 @@ func _physics_process(delta):
 	vel = Vector2.from_angle(rotation).normalized()
 	
 	position += vel * speed * delta
+	
 
 func _on_field_of_view_area_entered(area):
 	if area != self and area.is_in_group("enemyBoid"):
@@ -139,7 +140,6 @@ func _on_flock_area_exited(area):
 
 func _on_field_of_view_body_entered(body):
 	if body.is_in_group("player"):
-		print("see!")
 		player = body
 		if flock.size() > minFlock:
 			stance = stanceState.ATTACKING
