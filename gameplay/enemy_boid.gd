@@ -58,14 +58,14 @@ func _physics_process(delta):
 		var numBirds := following.size()
 		
 		for boid in following:
-			var desiredSeparation = position - boid.position
+			var desiredSeparation = global_position - boid.global_position
 			
 			if desiredSeparation.length() < boidSize * 2:
 				separation += desiredSeparation
 			
 			alignment += boid.vel
 			
-			cohesion += boid.position - position
+			cohesion += boid.global_position - global_position
 			
 		alignment /= numBirds
 		cohesion /= numBirds
@@ -91,7 +91,7 @@ func _physics_process(delta):
 	
 	vel = Vector2.from_angle(rotation).normalized()
 	
-	position += vel * speed * delta
+	global_position += vel * speed * delta
 	
 
 func _on_field_of_view_area_entered(area):
@@ -105,7 +105,7 @@ func _on_field_of_view_area_exited(area):
 func attack(currentVel : Vector2) -> Vector2:
 	if stance == stanceState.WANDERING: return currentVel
 	
-	var vector : Vector2 = (player.position - position) * 50
+	var vector : Vector2 = (player.global_position - global_position) * 50
 	if stance == stanceState.ATTACKING:
 		return currentVel + vector
 	else:
@@ -117,10 +117,10 @@ func landBias(delta : float) -> Vector2:
 	var nearestIsland = islands[0]
 	
 	for center in islands:
-		if position.distance_to(center) < position.distance_to(nearestIsland):
+		if global_position.distance_to(center) < global_position.distance_to(nearestIsland):
 			nearestIsland = center
 	
-	return (nearestIsland - position).normalized() * timeAtSea / 10
+	return (nearestIsland - global_position).normalized() * timeAtSea / 10
 
 func _on_area_exited(area):
 	if area.is_in_group("island"):

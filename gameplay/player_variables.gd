@@ -24,7 +24,6 @@ extends Node
 	Vector2(6224, 7608),
 	Vector2(6120, 6696),
 	Vector2(6176, 5952),
-	Vector2(7168, 7008),
 	Vector2(8112, 6016),
 	Vector2(8120, 6488),
 	Vector2(8744, 6844),

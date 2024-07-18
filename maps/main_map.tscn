@@ -1452,21 +1452,21 @@ layer_3/tile_data = PackedInt32Array(-327672, 983041, 7, -262136, 983041, 8, -32
 [node name="Islands" type="Node2D" parent="."]
 
 [node name="Island1" type="Area2D" parent="Islands" groups=["island"]]
-collision_layer = 128
+collision_layer = 129
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island1"]
 position = Vector2(-8, -232)
-polygon = PackedVector2Array(-520, -344, -432, 48, -416, 400, -176, 472, 440, 592, 536, 480, 736, -40, 736, -192, 608, -400, 208, -456)
+polygon = PackedVector2Array(-520, -344, -432, 48, -416, 400, -176, 472, 440, 592, 536, 480, 632, 16, 600, -160, 512, -376, 208, -456)
 
 [node name="Island2" type="Area2D" parent="Islands" groups=["island"]]
-collision_layer = 128
+collision_layer = 129
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island2"]
 position = Vector2(312, -1160)
 polygon = PackedVector2Array(-336, 16, -464, 360, 8, 376, -72, 24)
 
 [node name="Island3" type="Area2D" parent="Islands" groups=["island"]]
-collision_layer = 128
+collision_layer = 129
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island3"]
 position = Vector2(-520, -1104)
@@ -1605,6 +1605,7 @@ view_spawn_area = true
 
 [node name="Player" parent="." instance=ExtResource("5_x5jwk")]
 position = Vector2(152, -120)
+collision_mask = 129
 
 [node name="PlayerData" parent="." instance=ExtResource("7_6m3on")]
 islands = [Vector2(530, 150), Vector2(1225, -120), Vector2(-64, -520), Vector2(550, -616)]
