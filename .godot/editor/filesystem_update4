@@ -1,6 +1,8 @@
 res://maps/main_map.tscn
 res://gameplay/BirdBrain.gd
-res://boid_testing.tscn
-res://gameplay/enemy_boid.gd
 res://gameplay/player.gd
+res://gameplay/player.tscn
+res://gameplay/enemy_boid.tscn
+res://gameplay/fish_collectable.tscn
+res://gameplay/enemy_boid.gd
 res://gameplay/player_variables.gd

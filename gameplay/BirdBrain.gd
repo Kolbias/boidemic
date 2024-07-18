@@ -11,7 +11,7 @@ const boidConst : PackedScene = preload("res://gameplay/enemy_boid.tscn")
 @onready var islands := PlayerVariables.islands
 var targetNumBoids = PlayerVariables.num_boids
 var firstBoid = true
-var spawnCooldown = 0.0
+var spawnCooldown := 0.0
 
 #this gets the node named Player from the parent scene
 @onready var player : CharacterBody2D = parentScene.get_children().filter(func(node): return node.name == "Player")[0]
@@ -65,29 +65,41 @@ func spawnBoidInit(point : Vector2):
 	var newBoid = boidConst.instantiate()
 	parentScene.add_child.call_deferred(newBoid)
 	boidArray.append(newBoid)
-	newBoid.position = point
+	newBoid.global_position = point
+	newBoid.global_rotation = randf_range(0, TAU)
 
 func spawnBoid():
-	spawnCooldown = 2.0
-	var islands = PlayerVariables.islands
-	var nearestIsland = islands[0]
-	var pos = player.position
+	#islands.sort_custom(islandSort)
+	var nearestIsland = player.islands[0]
+	var pos = player.global_position
 	for center in islands:
 		if pos.distance_to(center) < pos.distance_to(nearestIsland):
 			nearestIsland = center
 	var newBoid = boidConst.instantiate()
-	parentScene.add_child.call_deferred(newBoid)
+	parentScene.add_child(newBoid)
 	boidArray.append(newBoid)
-	newBoid.position = nearestIsland
+	newBoid.global_position = nearestIsland + Vector2(randi_range(-100, 100), randi_range(-100, 100))
+	newBoid.global_rotation = Vector2.ZERO.angle_to_point(player.global_position)
+	print("spawned boid at " + str(nearestIsland))
 
 func cullBoids():
 	boidArray.sort_custom(boidSort)
 	while boidArray.size() > targetNumBoids:
+		#print("culled boid")
 		boidArray.back().queue_free()
 		boidArray.pop_back()
+		spawnCooldown = 100 / boidArray.back().global_position.distance_to(player.global_position)
+
+
 
 func boidSort(a : Enemy_Boid, b : Enemy_Boid):
-	var pos = player.position
-	if a.position.distance_to(pos) > b.position.distance_to(pos):
+	var pos = player.global_position
+	if a.global_position.distance_to(pos) > b.global_position.distance_to(pos):
+		return false
+	return true
+
+func islandSort(a : Vector2, b : Vector2):
+	var pos = player.global_position
+	if a.distance_to(pos) > b.distance_to(pos):
 		return false
 	return true

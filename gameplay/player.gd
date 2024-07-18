@@ -3,9 +3,12 @@ class_name Player
 
 var hostiles := []
 var identifiedFood := []
-var onLand : bool = false
+var onLand : bool = true
 var timeAtSea : float = 0
-var islands := PlayerVariables.islands
+var islands = PlayerVariables.islands
+var visitedIslands := []
+var retargetTime := 0.0
+var retargetBool = true
 
 var vel := Vector2.ZERO
 var speed := 15.0
@@ -38,6 +41,9 @@ enum PathingState {
 var pathingState := PathingState.DEFAULT
 
 func _ready():
+	islands.sort_custom(islandSort)
+	print(global_position)
+	print(islands)
 	var startRotation := randf_range(0, TAU)
 	global_rotation = startRotation
 	vel = Vector2.from_angle(rotation)
@@ -57,22 +63,44 @@ func _physics_process(delta):
 	
 	#are you dead?
 	if hp < 0:
+		print("I died")
 		speed = 0
 	
 	#eat known food
 	if identifiedFood:
+		print("I am targeting known food")
 		var target = identifiedFood.front()
-		vel += (target.position - position).normalized()
+		vel += (target.global_position - global_position).normalized()
 		
 	else:
 		#look for food
-		pass
-	
+		#print("I am looking for food")
+		var target
+		if retargetBool:
+			islands.sort_custom(islandSort)
+			retargetBool = false
+			print(retargetBool)
+		#if retargetTime == 0:
+			#islands.sort_custom(islandSort)
+			#retargetTime = 1.0
+		if visitedIslands.size() == islands.size():
+			print("new grand tour!")
+			visitedIslands.clear()
+		for i in islands:
+			if !visitedIslands.has(i):
+				target = i
+				#print("targeting " + str(target))
+				break
+		vel += (target - global_position).normalized()
+		if global_position.distance_to(target) < 1000:
+			print("saw an island")
+			retargetBool = true
+			visitedIslands.append(target)
 	
 	#avoid enemies
 	if pathingState == PathingState.DEFAULT and hostiles:
 		for enemy in hostiles:
-			var repulsion : Vector2 = (position - enemy.position) / position.distance_squared_to(enemy.position)
+			var repulsion : Vector2 = (global_position - enemy.global_position) / global_position.distance_squared_to(enemy.global_position)
 			vel += repulsion
 	
 	#stay on land
@@ -96,12 +124,15 @@ func _physics_process(delta):
 	var bonus = 1
 	if blinkState == BlinkState.BLINK:
 		bonus = 2
-	position += vel * speed * delta * bonus
+	global_position += vel * speed * delta * bonus
 	
 	blinkStateManager(delta * -1)
 	lifeTime += delta
+	retargetTime = max(0.0, retargetTime - delta)
 	hp -= delta * (lifeTime)
-	print(global_position)
+
+
+
 
 func _on_field_of_view_area_entered(area):
 	if area.is_in_group("enemyBoid"):
@@ -117,13 +148,14 @@ func landBias(delta : float) -> Vector2:
 	var nearestIsland = islands[0]
 	
 	for center in islands:
-		if position.distance_to(center) < position.distance_to(nearestIsland):
+		if global_position.distance_to(center) < global_position.distance_to(nearestIsland):
 			nearestIsland = center
-	
-	return (nearestIsland - position).normalized() * timeAtSea / 10
+	#print("heading to shore at coordinates " + str(nearestIsland))
+	return (nearestIsland - global_position).normalized() * timeAtSea / 10
 
 func _on_body_area_entered(area):
 	if area.is_in_group("island"):
+		print("I am ashore!")
 		onLand = true
 		timeAtSea = 0
 	elif area.is_in_group("food"):
@@ -138,6 +170,7 @@ func _on_body_area_entered(area):
 
 func _on_body_area_exited(area):
 	if area.is_in_group("island"):
+		print("I am at sea")
 		onLand = false
 
 func consume(value : int):
@@ -166,10 +199,16 @@ func _on_food_radar_area_entered(area):
 	if area.is_in_group("food") and !identifiedFood.has(area):
 		identifiedFood.append(area)
 		identifiedFood.sort_custom(areaSort)
-		print(area)
+		#print(area)
 
 func areaSort(a : Area2D, b : Area2D):
-	var pos = position
+	var pos = global_position
 	if a.position.distance_to(pos) > b.position.distance_to(pos):
+		return false
+	return true
+
+func islandSort(a : Vector2, b : Vector2):
+	var pos = global_position
+	if a.distance_to(pos) > b.distance_to(pos):
 		return false
 	return true
