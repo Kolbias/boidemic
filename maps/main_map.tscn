@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvx4w44xvlq8g"]
+[gd_scene load_steps=13 format=3 uid="uid://dvx4w44xvlq8g"]
 
 [ext_resource type="Texture2D" uid="uid://dqt6sj6w7w1gd" path="res://assets/art/tilesets/WaterTileAnimation.png" id="1_1i7tk"]
 [ext_resource type="Texture2D" uid="uid://b8viuij4po6yx" path="res://assets/art/tilesets/ShallowWaterAnimation.png" id="2_ck01w"]
 [ext_resource type="Texture2D" uid="uid://d0op4dupxnwut" path="res://assets/art/tilesets/Tileset1.png" id="3_y1sgx"]
 [ext_resource type="PackedScene" uid="uid://bxnl516pko0fh" path="res://gameplay/food_spawner.tscn" id="4_vbvff"]
 [ext_resource type="PackedScene" uid="uid://dbv7wnjyuqjja" path="res://gameplay/player.tscn" id="5_x5jwk"]
+[ext_resource type="PackedScene" uid="uid://wfxpjfhgish2" path="res://gameplay/PlayerData.tscn" id="7_6m3on"]
+[ext_resource type="Script" path="res://gameplay/BirdBrain.gd" id="7_b5cso"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t6ky0"]
 texture = ExtResource("1_1i7tk")
@@ -1425,7 +1427,7 @@ sources/1 = SubResource("TileSetAtlasSource_46d7s")
 sources/0 = SubResource("TileSetAtlasSource_up67j")
 
 [node name="MainMap" type="Node2D"]
-position = Vector2(448, 320)
+position = Vector2(7360, 7424)
 
 [node name="OceanTiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_l8jdl")
@@ -1477,6 +1479,119 @@ collision_layer = 129
 position = Vector2(752, -496)
 polygon = PackedVector2Array(-160, -64, -72, 256, 264, 128, 152, -144)
 
+[node name="Island5" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island5"]
+position = Vector2(-1272, -752)
+polygon = PackedVector2Array(-160, -112, -72, 192, 240, 168, 192, -112)
+
+[node name="Island6" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island6"]
+position = Vector2(1328, -592)
+polygon = PackedVector2Array(-160, -64, -104, 224, 264, 128, 208, -120)
+
+[node name="Island7" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island7"]
+position = Vector2(-1200, -1512)
+polygon = PackedVector2Array(-264, 16, -248, 144, 264, 128, 216, -152)
+
+[node name="Island8" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island8"]
+position = Vector2(-240, -1480)
+polygon = PackedVector2Array(-128, -56, -72, 256, 264, 128, 128, -104)
+
+[node name="Island9" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island9"]
+position = Vector2(752, -1512)
+polygon = PackedVector2Array(-160, -64, -72, 256, 384, 264, 608, -40)
+
+[node name="Island10" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island10"]
+position = Vector2(1304, 448)
+polygon = PackedVector2Array(-160, -64, -136, 200, 120, 208, 264, 128, 128, -80)
+
+[node name="Island11" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island11"]
+position = Vector2(368, 1024)
+polygon = PackedVector2Array(-272, -128, -144, 264, 264, 128, 280, -176)
+
+[node name="Island12" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island12"]
+position = Vector2(-264, 928)
+polygon = PackedVector2Array(-160, -64, -72, 256, 312, 248, 344, 56, 152, -144)
+
+[node name="Island13" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island13"]
+position = Vector2(-1112, 1032)
+polygon = PackedVector2Array(-296, -208, -248, 312, 328, 272, 288, -232)
+
+[node name="Island14" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island14"]
+position = Vector2(744, -1016)
+polygon = PackedVector2Array(-96, -8, -80, 184, 144, 176, 88, -24)
+
+[node name="Island15" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island15"]
+position = Vector2(-800, -496)
+polygon = PackedVector2Array(-56, -24, -8, 88, 176, 72, 128, -88)
+
+[node name="Island16" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island16"]
+position = Vector2(-712, 56)
+polygon = PackedVector2Array(-136, -40, -72, 256, 160, 120, 152, -144)
+
+[node name="Island17" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island17"]
+position = Vector2(-1192, 216)
+polygon = PackedVector2Array(-128, -112, -96, 136, 360, 160, 304, -72, 184, -224)
+
+[node name="Island19" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island19"]
+position = Vector2(1400, -104)
+polygon = PackedVector2Array(-120, -24, -96, 200, 128, 176, 128, -72)
+
+[node name="Island20" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island20"]
+position = Vector2(1056, 1048)
+rotation = 0.289676
+polygon = PackedVector2Array(-192.182, -84.6313, -72, 256, 299.365, 136.161, 191.964, -224.173)
+
+[node name="Island21" type="Area2D" parent="Islands" groups=["island"]]
+collision_layer = 129
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Islands/Island21"]
+position = Vector2(768, 112)
+polygon = PackedVector2Array(-48, -56, -32, 224, 144, 248, 152, -88)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(144, -192)
 enabled = false
@@ -1489,4 +1604,11 @@ spawn_area_y = 100.0
 view_spawn_area = true
 
 [node name="Player" parent="." instance=ExtResource("5_x5jwk")]
-position = Vector2(864, -152)
+position = Vector2(152, -120)
+
+[node name="PlayerData" parent="." instance=ExtResource("7_6m3on")]
+islands = [Vector2(530, 150), Vector2(1225, -120), Vector2(-64, -520), Vector2(550, -616)]
+
+[node name="BirdBrain" type="Node2D" parent="."]
+position = Vector2(-7360, -7424)
+script = ExtResource("7_b5cso")

@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 const playerSceneConst : PackedScene = preload("res://gameplay/player.tscn")
 const boidConst : PackedScene = preload("res://gameplay/enemy_boid.tscn")
@@ -8,11 +8,13 @@ const boidConst : PackedScene = preload("res://gameplay/enemy_boid.tscn")
 @onready var screensize = parentScene.get_viewport_rect().size
 @onready var boidTree := Quadtree.new(Rect2(0, 0, screensize.x, screensize.y))
 @onready var playerFog := Quadtree.new(Rect2(0, 0, screensize.x, screensize.y))
-
+@onready var islands := PlayerVariables.islands
 var targetNumBoids = PlayerVariables.num_boids
 var firstBoid = true
 var spawnCooldown = 0.0
-var player : CharacterBody2D
+
+#this gets the node named Player from the parent scene
+@onready var player : CharacterBody2D = parentScene.get_children().filter(func(node): return node.name == "Player")[0]
 
 enum SpawnState {
 	SPAWNING,
@@ -21,11 +23,17 @@ enum SpawnState {
 
 var boidArray = []
 
+#debug drawing
+func _draw():
+	for island in islands:
+		draw_circle(island, 10, Color.RED)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = playerSceneConst.instantiate()
-	parentScene.add_child.call_deferred(player)
-	player.position = screensize / 2
+	
+	#player = playerSceneConst.instantiate()
+	#parentScene.add_child.call_deferred(player)
+	#player.position = screensize / 2
 	
 	while boidArray.size() < targetNumBoids:
 		var x = randf_range(0, screensize.x)

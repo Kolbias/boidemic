@@ -17,6 +17,7 @@ const maxSpeed := 75.0
 
 var onLand : bool = false
 var timeAtSea : float = 0
+
 var stance = stanceState.WANDERING
 enum stanceState {
 	ATTACKING,
