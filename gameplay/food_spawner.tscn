@@ -13,7 +13,7 @@ spawn_area_y = 250.0
 [node name="Area" type="ColorRect" parent="."]
 offset_right = 100.0
 offset_bottom = 100.0
-color = Color(1, 0.211765, 0.882353, 0.188235)
+color = Color(1, 0.337255, 0.882353, 0.898039)
 
 [node name="Timer" type="Timer" parent="."]
 

@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvx4w44xvlq8g"]
+[gd_scene load_steps=15 format=3 uid="uid://dvx4w44xvlq8g"]
 
 [ext_resource type="Texture2D" uid="uid://dqt6sj6w7w1gd" path="res://assets/art/tilesets/WaterTileAnimation.png" id="1_1i7tk"]
 [ext_resource type="Texture2D" uid="uid://b8viuij4po6yx" path="res://assets/art/tilesets/ShallowWaterAnimation.png" id="2_ck01w"]
 [ext_resource type="Texture2D" uid="uid://d0op4dupxnwut" path="res://assets/art/tilesets/Tileset1.png" id="3_y1sgx"]
 [ext_resource type="PackedScene" uid="uid://bxnl516pko0fh" path="res://gameplay/food_spawner.tscn" id="4_vbvff"]
+[ext_resource type="PackedScene" uid="uid://dmwfcx3wdlpxg" path="res://gameplay/mouse_collectable.tscn" id="5_mnvb7"]
 [ext_resource type="PackedScene" uid="uid://dbv7wnjyuqjja" path="res://gameplay/player.tscn" id="5_x5jwk"]
+[ext_resource type="PackedScene" uid="uid://cuba4n3qumv0m" path="res://gameplay/worm_collectable.tscn" id="6_ugtr7"]
 [ext_resource type="PackedScene" uid="uid://wfxpjfhgish2" path="res://gameplay/PlayerData.tscn" id="7_6m3on"]
 [ext_resource type="Script" path="res://gameplay/BirdBrain.gd" id="7_b5cso"]
 
@@ -1596,11 +1598,37 @@ polygon = PackedVector2Array(-48, -56, -32, 224, 144, 248, 152, -88)
 position = Vector2(144, -192)
 enabled = false
 
-[node name="FoodSpawner" parent="." instance=ExtResource("4_vbvff")]
-position = Vector2(520, 56)
-max_foods = 2
-spawn_area_x = 100.0
-spawn_area_y = 100.0
+[node name="FishSpawner" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(504, 224)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FishSpawner2" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(32, 304)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FishSpawner3" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(312, 448)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FishSpawner4" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-344, 448)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FishSpawner5" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(656, 624)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FoodSpawner2" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-264, -576)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 575.0
+spawn_area_y = 700.0
 view_spawn_area = true
 
 [node name="Player" parent="." instance=ExtResource("5_x5jwk")]

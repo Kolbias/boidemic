@@ -1,11 +1,16 @@
 extends CanvasLayer
 
-@onready var resource_label = $Control/MarginContainer/VBoxContainer/Label
+@onready var resources_label = $Control/TopLeftMargin/VBoxContainer/ResourcesLabel
 @onready var upgrade_panel = $Control/MarginContainer/MarginContainer/UpgradePanel
 @onready var margin_container = $Control/MarginContainer/MarginContainer
 
+var is_visible := false
+
+func _ready():
+	hide_window()
+
 func _process(delta):
-	resource_label.text = "Resources: " + str(PlayerVariables.resource_amount)
+	resources_label.text = "Resources: " + str(PlayerVariables.resource_amount)
 
 func display_window():
 	upgrade_panel.show()
@@ -23,9 +28,10 @@ func hide_window():
 	upgrade_panel.hide()
 
 
-func _on_hide_upgrade_menu_pressed():
-	hide_window()
-
-
-func _on_show_menu_pressed():
-	display_window()
+func _on_upgrades_pressed():
+	if is_visible:
+		hide_window()
+		is_visible = false
+	else:
+		display_window()
+		is_visible = true

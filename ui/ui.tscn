@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfvpt71ravmij"]
+[gd_scene load_steps=3 format=3 uid="uid://bfvpt71ravmij"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_105e6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytppo"]
+bg_color = Color(0.996078, 0.0235294, 0.282353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_105e6")
@@ -14,45 +22,50 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HideMenu" type="Button" parent="Control"]
-layout_mode = 2
-offset_left = 64.0
-offset_top = 91.0
-offset_right = 227.0
-offset_bottom = 122.0
-size_flags_horizontal = 0
-text = "Hide Upgrade Menu"
-
-[node name="ShowMenu" type="Button" parent="Control"]
+[node name="TopLeftMargin" type="MarginContainer" parent="Control"]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 128.0
-offset_right = 233.0
-offset_bottom = 159.0
-text = "Show Upgrade Menu"
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = -64.0
-offset_bottom = -72.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TopLeftMargin"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+[node name="ResourcesLabel" type="Label" parent="Control/TopLeftMargin/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
 text = "Resources: "
+
+[node name="HPBar" type="ProgressBar" parent="Control/TopLeftMargin/VBoxContainer"]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ytppo")
+value = 100.0
+show_percentage = false
+
+[node name="Upgrades" type="Button" parent="Control/TopLeftMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Upgrades"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -137.5
+offset_right = 150.0
+offset_bottom = 137.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer"]
 layout_mode = 2
@@ -63,7 +76,6 @@ theme_override_constants/margin_right = 150
 theme_override_constants/margin_bottom = 75
 
 [node name="UpgradePanel" type="Panel" parent="Control/MarginContainer/MarginContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 
@@ -90,7 +102,8 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
 layout_mode = 2
-text = "Label 1"
+text = "Upgrade 1
+"
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
@@ -108,7 +121,8 @@ mouse_filter = 2
 
 [node name="Label2" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
 layout_mode = 2
-text = "Label 2"
+text = "Upgrade 2
+"
 horizontal_alignment = 1
 
 [node name="Panel2" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
@@ -128,7 +142,7 @@ alignment = 1
 
 [node name="Label3" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
 layout_mode = 2
-text = "Label 3"
+text = "Upgrade 3"
 horizontal_alignment = 1
 
 [node name="Panel3" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
@@ -140,5 +154,5 @@ mouse_filter = 2
 layout_mode = 2
 text = "Button 3"
 
-[connection signal="pressed" from="Control/HideMenu" to="." method="_on_hide_upgrade_menu_pressed"]
-[connection signal="pressed" from="Control/ShowMenu" to="." method="_on_show_menu_pressed"]
+[connection signal="pressed" from="Control/TopLeftMargin/VBoxContainer/Upgrades" to="." method="_on_hide_upgrade_menu_pressed"]
+[connection signal="pressed" from="Control/TopLeftMargin/VBoxContainer/Upgrades" to="." method="_on_upgrades_pressed"]
