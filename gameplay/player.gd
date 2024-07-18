@@ -9,6 +9,7 @@ var islands := PlayerVariables.islands
 
 var vel := Vector2.ZERO
 var speed := 15.0
+var lifeTime = 0.0
 const minSpeed := 15.0
 const maxSpeed := 80.0
 const viewRect := Rect2(0, 0, 320, 320)
@@ -46,6 +47,7 @@ func _ready():
 	blinkTime = PlayerVariables.blink_time
 
 func _physics_process(delta):
+	#debug to show pathing state
 	if pathingState == PathingState.AGGRESSIVE:
 		modulate = Color(1, 0, 0, 1)
 	elif blinkState == BlinkState.BLINK:
@@ -53,7 +55,8 @@ func _physics_process(delta):
 	else:
 		modulate = Color(1, 1, 1, 1)
 	
-	if hp < 1:
+	#are you dead?
+	if hp < 0:
 		speed = 0
 	
 	#eat known food
@@ -96,8 +99,9 @@ func _physics_process(delta):
 	position += vel * speed * delta * bonus
 	
 	blinkStateManager(delta * -1)
-	hp -= delta
-	print(hp)
+	lifeTime += delta
+	hp -= delta * (lifeTime)
+	print(global_position)
 
 func _on_field_of_view_area_entered(area):
 	if area.is_in_group("enemyBoid"):
