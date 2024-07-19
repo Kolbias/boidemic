@@ -2,16 +2,25 @@ extends Node
 
 #player stats
 @export var resource_amount := 0
-@export var max_hp := 155555.0
+@export var max_hp := 5000000.0
 var current_hp := max_hp
 @export var blink_count := 3
 @export var blink_time := 1.0
 @export var can_eat_fish = false
-@export var can_eat_birds = false
+@export var can_eat_birds = true
 @export var can_eat_fruit = false
 @export var can_eat_mice = false
-@export var can_eat_worms = true
+@export var max_speed = 22.0
+const can_eat_worms = true
 
+var upgrade_levels = {
+	"max_hp" : 0,
+	"max_speed" : 0,
+	"blink_count" : 0,
+	"blink_time" : 0,
+	"min_flock" : 0,
+	"food_level" : 0
+}
 
 #enemy stats
 @export var min_flock = 2
@@ -35,3 +44,9 @@ var current_hp := max_hp
 	Vector2(8696, 7936),
 	Vector2(8176, 7536),
 ]
+
+const default_res := 0
+const default_hp := 50.0
+const default_blinks := 1
+const default_blink_time := 1.0
+const default_flock := 2

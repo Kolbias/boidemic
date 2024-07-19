@@ -84,6 +84,8 @@ func spawnBoid():
 	#print("spawned boid at " + str(nearestIsland))
 
 func cullBoids():
+	if targetNumBoids < 2:
+		return
 	boidArray.sort_custom(boidSort)
 	while boidArray.size() > targetNumBoids:
 		#print("culled boid")
@@ -91,8 +93,6 @@ func cullBoids():
 		boidArray.pop_back()
 		spawnCooldown = 100 / \
 		boidArray.back().global_position.distance_to(player.global_position)
-
-
 
 func boidSort(a : Enemy_Boid, b : Enemy_Boid):
 	var pos = player.global_position
@@ -105,3 +105,15 @@ func islandSort(a : Vector2, b : Vector2):
 	if a.distance_to(pos) > b.distance_to(pos):
 		return false
 	return true
+
+
+func _on_player_ate_boid(boid):
+	boid.queue_free()
+	boidArray.erase(boid)
+	targetNumBoids -= 1
+	for enemy in boidArray:
+		if enemy.global_position.distance_to(player.global_position) < 200:
+			enemy.vel += enemy.global_position - player.global_position / \
+			(enemy.global_position.distance_squared_to(player.global_position))
+	print("ate boid")
+	print(boidArray.size())
