@@ -12,3 +12,4 @@ func _ready():
 			add_to_group("mouse")
 		"res://assets/art/Worm.png":
 			add_to_group("worm")
+

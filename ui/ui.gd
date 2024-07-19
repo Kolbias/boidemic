@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var resources_label = $Control/TopLeftMargin/VBoxContainer/ResourcesLabel
+@onready var hp_label = $Control/TopLeftMargin/VBoxContainer/HPLabel
 @onready var upgrade_panel = $Control/MarginContainer/MarginContainer/UpgradePanel
 @onready var margin_container = $Control/MarginContainer/MarginContainer
 
@@ -10,8 +10,7 @@ func _ready():
 	hide_window()
 
 func _process(delta):
-	resources_label.text = "Resources: " + str(PlayerVariables.resource_amount)
-
+	hp_label.text = "HP: " + str(int(PlayerVariables.current_hp))
 func display_window():
 	upgrade_panel.show()
 	var tween = create_tween()

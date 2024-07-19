@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_axfdb"]
 [ext_resource type="PackedScene" uid="uid://dvx4w44xvlq8g" path="res://maps/main_map.tscn" id="2_dd0l7"]
 [ext_resource type="PackedScene" uid="uid://bfvpt71ravmij" path="res://ui/ui.tscn" id="2_e1q5f"]
-[ext_resource type="PackedScene" uid="uid://dbv7wnjyuqjja" path="res://gameplay/player.tscn" id="2_heofh"]
+[ext_resource type="AudioStream" uid="uid://b1jmx5c2v3m12" path="res://assets/sounds/AerialAmbience_Example.mp3" id="4_2p0iu"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_axfdb")
@@ -12,5 +12,7 @@ script = ExtResource("1_axfdb")
 
 [node name="MainMap" parent="." instance=ExtResource("2_dd0l7")]
 
-[node name="Player" parent="." instance=ExtResource("2_heofh")]
-position = Vector2(1451.48, -257.896)
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2p0iu")
+volume_db = -6.0
+autoplay = true

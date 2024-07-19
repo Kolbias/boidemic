@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Boidemic"
+run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -20,7 +21,7 @@ PlayerVariables="*res://gameplay/player_variables.gd"
 
 [editor]
 
-movie_writer/movie_file="D:/daler/godot/movies/test.avi"
+movie_writer/movie_file="C:/Users/kolby/Desktop/BoidemicPrev.avi"
 
 [input]
 
