@@ -8,13 +8,14 @@ const boidConst : PackedScene = preload("res://gameplay/enemy_boid.tscn")
 @onready var screensize = parentScene.get_viewport_rect().size
 @onready var boidTree := Quadtree.new(Rect2(0, 0, screensize.x, screensize.y))
 @onready var playerFog := Quadtree.new(Rect2(0, 0, screensize.x, screensize.y))
-@onready var islands := PlayerVariables.islands
+@onready var islands := PlayerVariables.islands.duplicate()
 var targetNumBoids = PlayerVariables.num_boids
 var firstBoid = true
 var spawnCooldown := 0.0
 
 #this gets the node named Player from the parent scene
-@onready var player : CharacterBody2D = parentScene.get_children().filter(func(node): return node.name == "Player")[0]
+@onready var player : CharacterBody2D = parentScene.get_children()\
+	.filter(func(node): return node.name == "Player")[0]
 
 enum SpawnState {
 	SPAWNING,
@@ -24,9 +25,9 @@ enum SpawnState {
 var boidArray = []
 
 #debug drawing
-func _draw():
-	for island in islands:
-		draw_circle(island, 10, Color.RED)
+#func _draw():
+	#for island in islands:
+		#draw_circle(island, 10, Color.RED)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,7 +40,8 @@ func _ready():
 		var x = randf_range(0, screensize.x)
 		var y = randf_range(0, screensize.y)
 		
-		while Vector2(x, y).distance_to(Vector2(screensize.x / 2, screensize.y / 2)) < 150:
+		while Vector2(x, y)\
+		.distance_to(Vector2(screensize.x / 2, screensize.y / 2)) < 150:
 			x = randf_range(0, screensize.x)
 			y = randf_range(0, screensize.y)
 		
@@ -69,7 +71,6 @@ func spawnBoidInit(point : Vector2):
 	newBoid.global_rotation = randf_range(0, TAU)
 
 func spawnBoid():
-	#islands.sort_custom(islandSort)
 	var nearestIsland = player.islands[0]
 	var pos = player.global_position
 	for center in islands:
@@ -80,7 +81,7 @@ func spawnBoid():
 	boidArray.append(newBoid)
 	newBoid.global_position = nearestIsland + Vector2(randi_range(-100, 100), randi_range(-100, 100))
 	newBoid.global_rotation = Vector2.ZERO.angle_to_point(player.global_position)
-	print("spawned boid at " + str(nearestIsland))
+	#print("spawned boid at " + str(nearestIsland))
 
 func cullBoids():
 	boidArray.sort_custom(boidSort)
@@ -88,7 +89,8 @@ func cullBoids():
 		#print("culled boid")
 		boidArray.back().queue_free()
 		boidArray.pop_back()
-		spawnCooldown = 100 / boidArray.back().global_position.distance_to(player.global_position)
+		spawnCooldown = 100 / \
+		boidArray.back().global_position.distance_to(player.global_position)
 
 
 

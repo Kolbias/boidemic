@@ -5,7 +5,7 @@ var hostiles := []
 var identifiedFood := []
 var onLand : bool = true
 var timeAtSea : float = 0
-var islands = PlayerVariables.islands
+var islands = PlayerVariables.islands.duplicate()
 var visitedIslands := []
 var retargetTime := 0.0
 var retargetBool = true
@@ -19,9 +19,7 @@ const viewRect := Rect2(0, 0, 320, 320)
 
 @onready var screensize := get_viewport_rect().size
 @onready var size : float = $BodyCollision.shape.radius
-@onready var fog := Quadtree.new(
-	Rect2(Vector2.ZERO, Vector2(screensize.x, screensize.y))
-	)
+#@onready var fog := Quadtree.new(Rect2(Vector2.ZERO, Vector2(screensize.x, screensize.y)))
 
 var hp := 0.0
 var blinks := 0
@@ -42,13 +40,12 @@ var pathingState := PathingState.DEFAULT
 
 func _ready():
 	islands.sort_custom(islandSort)
-	print(global_position)
-	print(islands)
 	var startRotation := randf_range(0, TAU)
 	global_rotation = startRotation
 	vel = Vector2.from_angle(rotation)
 	
-	hp = PlayerVariables.max_hp
+	hp += hpDelta(PlayerVariables.max_hp)
+
 	blinks = PlayerVariables.blink_count
 	blinkTime = PlayerVariables.blink_time
 
@@ -68,7 +65,7 @@ func _physics_process(delta):
 	
 	#eat known food
 	if identifiedFood:
-		print("I am targeting known food")
+		#print("I am targeting known food")
 		var target = identifiedFood.front()
 		vel += (target.global_position - global_position).normalized()
 		
@@ -79,7 +76,6 @@ func _physics_process(delta):
 		if retargetBool:
 			islands.sort_custom(islandSort)
 			retargetBool = false
-			print(retargetBool)
 		#if retargetTime == 0:
 			#islands.sort_custom(islandSort)
 			#retargetTime = 1.0
@@ -93,14 +89,16 @@ func _physics_process(delta):
 				break
 		vel += (target - global_position).normalized()
 		if global_position.distance_to(target) < 1000:
-			print("saw an island")
+			#print("saw an island")
 			retargetBool = true
 			visitedIslands.append(target)
 	
 	#avoid enemies
 	if pathingState == PathingState.DEFAULT and hostiles:
 		for enemy in hostiles:
-			var repulsion : Vector2 = (global_position - enemy.global_position) / global_position.distance_squared_to(enemy.global_position)
+			var repulsion : Vector2 = (global_position - enemy.global_position) \
+			/ global_position.distance_squared_to(enemy.global_position)
+				
 			vel += repulsion
 	
 	#stay on land
@@ -129,9 +127,7 @@ func _physics_process(delta):
 	blinkStateManager(delta * -1)
 	lifeTime += delta
 	retargetTime = max(0.0, retargetTime - delta)
-	hp -= delta * (lifeTime)
-
-
+	hp += hpDelta(delta * (lifeTime) * -1)
 
 
 func _on_field_of_view_area_entered(area):
@@ -148,34 +144,37 @@ func landBias(delta : float) -> Vector2:
 	var nearestIsland = islands[0]
 	
 	for center in islands:
-		if global_position.distance_to(center) < global_position.distance_to(nearestIsland):
+		if global_position.distance_to(
+			center) < global_position.distance_to(nearestIsland):
 			nearestIsland = center
 	#print("heading to shore at coordinates " + str(nearestIsland))
 	return (nearestIsland - global_position).normalized() * timeAtSea / 10
 
 func _on_body_area_entered(area):
 	if area.is_in_group("island"):
-		print("I am ashore!")
+		#print("I am ashore!")
 		onLand = true
 		timeAtSea = 0
 	elif area.is_in_group("food"):
-		consume(area.resource_value)
-		identifiedFood.erase(area)
-		area.queue_free()
+		if area.is_in_group("worm") and PlayerVariables.can_eat_worms or \
+		area.is_in_group("fish") and PlayerVariables.can_eat_fish or \
+		area.is_in_group("mouse") and PlayerVariables.can_eat_mice or \
+		area.is_in_group("fruit") and PlayerVariables.can_eat_fruit:
+			consume(area.resource_value)
+			identifiedFood.erase(area)
+			area.queue_free()
 	elif area.is_in_group("enemyBoid"):
 		if blinkState == BlinkState.DEFAULT:
-			hp -= 1
-			print(hp)
+			hp += hpDelta(-1)
 			blinkStateManager(1)
 
 func _on_body_area_exited(area):
 	if area.is_in_group("island"):
-		print("I am at sea")
+		#print("I am at sea")
 		onLand = false
 
 func consume(value : int):
-	PlayerVariables.resource_amount += value
-	hp += value
+	hp += hpDelta(value)
 
 func blinkStateManager(duration : float):
 	if blinkState == BlinkState.DEFAULT and duration > 0:
@@ -189,7 +188,7 @@ func blinkStateManager(duration : float):
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
-		print(event)
+		#print(event)
 		if blinks > 0:
 			blinks -= 1
 			pathingState = PathingState.AGGRESSIVE
@@ -197,9 +196,12 @@ func _unhandled_input(event):
 
 func _on_food_radar_area_entered(area):
 	if area.is_in_group("food") and !identifiedFood.has(area):
-		identifiedFood.append(area)
-		identifiedFood.sort_custom(areaSort)
-		#print(area)
+		if area.is_in_group("worm") and PlayerVariables.can_eat_worms or \
+		area.is_in_group("fish") and PlayerVariables.can_eat_fish or \
+		area.is_in_group("mouse") and PlayerVariables.can_eat_mice or \
+		area.is_in_group("fruit") and PlayerVariables.can_eat_fruit:
+			identifiedFood.append(area)
+			identifiedFood.sort_custom(areaSort)
 
 func areaSort(a : Area2D, b : Area2D):
 	var pos = global_position
@@ -212,3 +214,7 @@ func islandSort(a : Vector2, b : Vector2):
 	if a.distance_to(pos) > b.distance_to(pos):
 		return false
 	return true
+
+func hpDelta(value : float) -> float:
+	PlayerVariables.current_hp += value
+	return value

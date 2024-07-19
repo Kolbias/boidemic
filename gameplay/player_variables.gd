@@ -2,12 +2,16 @@ extends Node
 
 #player stats
 @export var resource_amount := 0
-@export var max_hp = 155555.0
+@export var max_hp := 155555.0
+var current_hp := max_hp
 @export var blink_count := 3
 @export var blink_time := 1.0
 @export var can_eat_fish = false
 @export var can_eat_birds = false
 @export var can_eat_fruit = false
+@export var can_eat_mice = false
+@export var can_eat_worms = true
+
 
 #enemy stats
 @export var min_flock = 2
