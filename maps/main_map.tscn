@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvx4w44xvlq8g"]
+[gd_scene load_steps=16 format=3 uid="uid://dvx4w44xvlq8g"]
 
 [ext_resource type="Texture2D" uid="uid://dqt6sj6w7w1gd" path="res://assets/art/tilesets/WaterTileAnimation.png" id="1_1i7tk"]
 [ext_resource type="Texture2D" uid="uid://b8viuij4po6yx" path="res://assets/art/tilesets/ShallowWaterAnimation.png" id="2_ck01w"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cuba4n3qumv0m" path="res://gameplay/worm_collectable.tscn" id="6_ugtr7"]
 [ext_resource type="PackedScene" uid="uid://wfxpjfhgish2" path="res://gameplay/PlayerData.tscn" id="7_6m3on"]
 [ext_resource type="Script" path="res://gameplay/BirdBrain.gd" id="7_b5cso"]
+[ext_resource type="PackedScene" uid="uid://cbw6lidxp12kc" path="res://gameplay/crab_collectable.tscn" id="7_pfneq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t6ky0"]
 texture = ExtResource("1_1i7tk")
@@ -1660,6 +1661,13 @@ foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
 max_foods = 25
 spawn_area_x = 575.0
 spawn_area_y = 700.0
+
+[node name="FoodSpawner27" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-312, -296)
+foods = Array[PackedScene]([ExtResource("7_pfneq")])
+max_foods = 25
+spawn_area_x = 96.0
+spawn_area_y = 192.0
 
 [node name="FoodSpawner3" parent="." instance=ExtResource("4_vbvff")]
 position = Vector2(-568, -896)

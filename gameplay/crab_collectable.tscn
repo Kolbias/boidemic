@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbw6lidxp12kc"]
+
+[ext_resource type="Script" path="res://gameplay/collectable.gd" id="1_ilwvu"]
+[ext_resource type="Texture2D" uid="uid://v4hfkphh63pq" path="res://assets/art/Crab.png" id="2_s4gvu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dojwh"]
+radius = 8.0
+
+[node name="Crab" type="Area2D"]
+script = ExtResource("1_ilwvu")
+resource_value = 35
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s4gvu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dojwh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

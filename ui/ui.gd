@@ -5,7 +5,7 @@ extends CanvasLayer
 @onready var margin_container = $Control/MarginContainer/MarginContainer
 
 var is_visible := false
-
+var is_clickable := true
 func _ready():
 	hide_window()
 
@@ -26,11 +26,12 @@ func hide_window():
 	await tween.finished
 	upgrade_panel.hide()
 
-
-func _on_upgrades_pressed():
+func _on_upgrades_button_down():
 	if is_visible:
 		hide_window()
 		is_visible = false
+	
 	else:
 		display_window()
 		is_visible = true
+

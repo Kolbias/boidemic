@@ -138,5 +138,4 @@ mouse_filter = 2
 layout_mode = 2
 text = "Button 3"
 
-[connection signal="pressed" from="Control/TopLeftMargin/VBoxContainer/Upgrades" to="." method="_on_upgrades_pressed"]
-[connection signal="pressed" from="Control/TopLeftMargin/VBoxContainer/Upgrades" to="." method="_on_hide_upgrade_menu_pressed"]
+[connection signal="button_down" from="Control/TopLeftMargin/VBoxContainer/Upgrades" to="." method="_on_upgrades_button_down"]
