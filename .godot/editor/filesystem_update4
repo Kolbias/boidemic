@@ -1,8 +1,14 @@
 res://maps/main_map.tscn
 res://gameplay/BirdBrain.gd
-res://gameplay/player.gd
 res://gameplay/player.tscn
-res://gameplay/enemy_boid.tscn
 res://gameplay/fish_collectable.tscn
-res://gameplay/enemy_boid.gd
+res://gameplay/enemy_boid.tscn
+res://gameplay/food_spawner.gd
+res://gameplay/food_spawner.tscn
+res://gameplay/player.gd
+res://audio/audio_player.tscn
+res://gameplay/worm_collectable.tscn
+res://gameplay/collectable.gd
+res://gameplay/mouse_collectable.tscn
 res://gameplay/player_variables.gd
+res://ui/ui.tscn

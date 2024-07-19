@@ -1452,6 +1452,7 @@ layer_3/name = "Upper2"
 layer_3/tile_data = PackedInt32Array(-327672, 983041, 7, -262136, 983041, 8, -327671, 1048577, 7, -262135, 1048577, 8, -131062, 983041, 7, -65526, 983041, 8, -131061, 1048577, 7, -65525, 1048577, 8, -1638318, 983041, 7, -1572782, 983041, 8, -1638317, 1048577, 7, -1572781, 1048577, 8, -1048557, 1179649, 7, -983021, 1179649, 8, -1048556, 1245185, 7, -983020, 1245185, 8, -1179627, 1179649, 7, -1114091, 1179649, 8, -1179626, 1245185, 7, -1114090, 1245185, 8, 524306, 1179649, 7, 589842, 1179649, 8, 524307, 1245185, 7, 589843, 1245185, 8, -393205, 1179649, 7, -327669, 1179649, 8, -393204, 1245185, 7, -327668, 1245185, 8, 327764, 1179649, 7, 393300, 1179649, 8, 327765, 1245185, 7, 393301, 1245185, 8, 2883667, 1245185, 7, 2949203, 1245185, 8, 2883666, 1179649, 7, 2949202, 1179649, 8, 2490441, 1179649, 7, 2555977, 1179649, 8, 2490442, 1245185, 7, 2555978, 1245185, 8, 2359370, 1179649, 7, 2424906, 1179649, 8, 2359371, 1245185, 7, 2424907, 1245185, 8, 2228297, 1179649, 7, 2293833, 1179649, 8, 2228298, 1245185, 7, 2293834, 1245185, 8, 2687058, 1179649, 7, 2752594, 1179649, 8, 2687059, 1245185, 7, 2752595, 1245185, 8, -5242896, 983041, 7, -5177360, 983041, 8, -5242895, 1048577, 7, -5177359, 1048577, 8, -5373967, 983041, 7, -5308431, 983041, 8, -5373966, 1048577, 7, -5308430, 1048577, 8, -4980760, 1179649, 7, -4915224, 1179649, 8, -4980759, 1245185, 7, -4915223, 1245185, 8, -5636120, 1179649, 7, -5570584, 1179649, 8, -5636119, 1245185, 7, -5570583, 1245185, 8, -2359377, 983041, 7, -2293841, 983041, 8, -2359376, 1048577, 7, -2293840, 1048577, 8, -2424911, 983041, 7, -2359375, 983041, 8, -2424910, 1048577, 7, -2359374, 1048577, 8, -2490449, 983041, 7, -2424913, 983041, 8, -2490448, 1048577, 7, -2424912, 1048577, 8, -2555983, 983041, 7, -2490447, 983041, 8, -2555982, 1048577, 7, -2490446, 1048577, 8, -2621521, 983041, 7, -2555985, 983041, 8, -2621520, 1048577, 7, -2555984, 1048577, 8, -2752591, 983041, 7, -2687055, 983041, 8, -2752590, 1048577, 7, -2687054, 1048577, 8, -2490451, 983041, 7, -2424915, 983041, 8, -2490450, 1048577, 7, -2424914, 1048577, 8, -2752595, 983041, 7, -2687059, 983041, 8, -2752594, 1048577, 7, -2687058, 1048577, 8, -2555989, 983041, 7, -2490453, 983041, 8, -2555988, 1048577, 7, -2490452, 1048577, 8, -2621523, 983041, 7, -2555987, 983041, 8, -2621522, 1048577, 7, -2555986, 1048577, 8, -2752598, 983041, 7, -2687062, 983041, 8, -2752597, 1048577, 7, -2687061, 1048577, 8, 65532, 983041, 7, 131068, 983041, 8, 65533, 1048577, 7, 131069, 1048577, 8, -131073, 983041, 7, -65537, 983041, 8, -196608, 1048577, 7, -131072, 1048577, 8, -65539, 983041, 7, -3, 983041, 8, -65538, 1048577, 7, -2, 1048577, 8, -327684, 983041, 7, -262148, 983041, 8, -327683, 1048577, 7, -262147, 1048577, 8, -196615, 983041, 7, -131079, 983041, 8, -196614, 1048577, 7, -131078, 1048577, 8, -65543, 983041, 7, -7, 983041, 8, -65542, 1048577, 7, -6, 1048577, 8, -393218, 983041, 7, -327682, 983041, 8, -393217, 1048577, 7, -327681, 1048577, 8, -393222, 983041, 7, -327686, 983041, 8, -393221, 1048577, 7, -327685, 1048577, 8, -327688, 983041, 7, -262152, 983041, 8, -327687, 1048577, 7, -262151, 1048577, 8, -196613, 983041, 7, -131077, 983041, 8, -196612, 1048577, 7, -131076, 1048577, 8, -131081, 983041, 7, -65545, 983041, 8, -131080, 1048577, 7, -65544, 1048577, 8, 65528, 983041, 7, 131064, 983041, 8, 65529, 1048577, 7, 131065, 1048577, 8, -327679, 983041, 7, -262143, 983041, 8, -327678, 1048577, 7, -262142, 1048577, 8, -196607, 983041, 7, -131071, 983041, 8, -196606, 1048577, 7, -131070, 1048577, 8, -65535, 983041, 7, 1, 983041, 8, -65534, 1048577, 7, 2, 1048577, 8, 65536, 983041, 7, 131072, 983041, 8, 65537, 1048577, 7, 131073, 1048577, 8, 196606, 983041, 7, 262142, 983041, 8, 196607, 1048577, 7, 262143, 1048577, 8, 4521908, 1179649, 7, 4587444, 1179649, 8, 4521909, 1245185, 7, 4587445, 1245185, 8, 4980799, 0, 3, 4915263, 0, 3, 4849727, 0, 805306373, 5046335, 0, 3, 5111871, 0, 3, 5177407, 0, 4, 5177406, 1507329, 805306381, 5177405, 1507329, 805306381, 5177404, 1507329, 805306381, 5177403, 917505, 16, 5111868, 0, 5, 5177409, 1179649, 7, 5242945, 1179649, 8, 5177410, 1245185, 7, 5242946, 1245185, 8, 4784193, 1179649, 7, 4849729, 1179649, 8, 4784194, 1245185, 7, 4849730, 1245185, 8, 4915260, 1638401, 17, 4849725, 1441793, 17, 4849726, 1179649, 17, 5111865, 1179649, 7, 5177401, 1179649, 8, 5111866, 1245185, 7, 5177402, 1245185, 8, 5242936, 1179649, 7, 5308472, 1179649, 8, 5242937, 1245185, 7, 5308473, 1245185, 8, 4784184, 1179649, 7, 4849720, 1179649, 8, 4784185, 1245185, 7, 4849721, 1245185, 8, -5373890, 1179649, 7, -5308354, 1179649, 8, -5373889, 1245185, 7, -5308353, 1245185, 8, -5308352, 1179649, 7, -5242816, 1179649, 8, -5308351, 1245185, 7, -5242815, 1245185, 8, -5373897, 1179649, 7, -5308361, 1179649, 8, -5373896, 1245185, 7, -5308360, 1245185, 8, -5832641, 1179649, 7, -5767105, 1179649, 8, -5832640, 1245185, 7, -5767104, 1245185, 8, -5373882, 1179649, 7, -5308346, 1179649, 8, -5373881, 1245185, 7, -5308345, 1245185, 8, -4849601, 1179649, 7, -4784065, 1179649, 8, -4849600, 1245185, 7, -4784064, 1245185, 8)
 
 [node name="Islands" type="Node2D" parent="."]
+visible = false
 
 [node name="Island1" type="Area2D" parent="Islands" groups=["island"]]
 collision_layer = 129
@@ -1599,22 +1600,52 @@ position = Vector2(144, -192)
 enabled = false
 
 [node name="FishSpawner" parent="." instance=ExtResource("4_vbvff")]
-position = Vector2(504, 224)
+position = Vector2(488, 336)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FishSpawner6" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(832, -280)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FishSpawner7" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-320, -904)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FishSpawner8" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(1040, -848)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FishSpawner9" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-1096, -280)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FishSpawner10" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-1128, -1352)
+spawn_area_x = 300.0
+spawn_area_y = 350.0
+
+[node name="FishSpawner11" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(216, -1448)
 spawn_area_x = 300.0
 spawn_area_y = 350.0
 
 [node name="FishSpawner2" parent="." instance=ExtResource("4_vbvff")]
-position = Vector2(32, 304)
+position = Vector2(-392, 320)
 spawn_area_x = 300.0
 spawn_area_y = 350.0
 
 [node name="FishSpawner3" parent="." instance=ExtResource("4_vbvff")]
-position = Vector2(312, 448)
+position = Vector2(112, 432)
 spawn_area_x = 300.0
 spawn_area_y = 350.0
 
 [node name="FishSpawner4" parent="." instance=ExtResource("4_vbvff")]
-position = Vector2(-344, 448)
+position = Vector2(-832, 416)
 spawn_area_x = 300.0
 spawn_area_y = 350.0
 
@@ -1629,7 +1660,174 @@ foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
 max_foods = 25
 spawn_area_x = 575.0
 spawn_area_y = 700.0
-view_spawn_area = true
+
+[node name="FoodSpawner3" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-568, -896)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 104.0
+spawn_area_y = 116.0
+
+[node name="FoodSpawner4" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(0, -1040)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 208.0
+spawn_area_y = 176.0
+
+[node name="FoodSpawner5" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-784, -528)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 96.0
+spawn_area_y = 96.0
+
+[node name="FoodSpawner6" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(1272, -664)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 216.0
+spawn_area_y = 216.0
+
+[node name="FoodSpawner9" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(664, -536)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 192.0
+spawn_area_y = 184.0
+
+[node name="FoodSpawner7" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(712, -984)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 104.0
+spawn_area_y = 104.0
+
+[node name="FoodSpawner8" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(1352, -104)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 120.0
+spawn_area_y = 104.0
+
+[node name="FoodSpawner10" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(1224, 456)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 216.0
+spawn_area_y = 104.0
+
+[node name="FoodSpawner11" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(776, 56)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 88.0
+spawn_area_y = 104.0
+
+[node name="FoodSpawner12" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(968, 952)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 280.0
+spawn_area_y = 104.0
+
+[node name="FoodSpawner24" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(968, 1152)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 64.0
+spawn_area_y = 104.0
+
+[node name="FoodSpawner13" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-312, 856)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 184.0
+spawn_area_y = 224.0
+
+[node name="FoodSpawner14" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(248, 1112)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 104.0
+spawn_area_y = 104.0
+
+[node name="FoodSpawner15" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-1272, 880)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 96.0
+spawn_area_y = 104.0
+
+[node name="FoodSpawner16" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-1000, 152)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 88.0
+spawn_area_y = 120.0
+
+[node name="FoodSpawner25" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-776, 24)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 88.0
+spawn_area_y = 104.0
+
+[node name="FoodSpawner17" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-1240, 264)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 56.0
+spawn_area_y = 64.0
+
+[node name="FoodSpawner26" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-776, 168)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 56.0
+spawn_area_y = 64.0
+
+[node name="FoodSpawner18" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-1160, 152)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 56.0
+spawn_area_y = 64.0
+
+[node name="FoodSpawner19" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-1352, -816)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 224.0
+spawn_area_y = 112.0
+
+[node name="FoodSpawner20" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-1288, -1520)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 280.0
+spawn_area_y = 80.0
+
+[node name="FoodSpawner21" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(-280, -1480)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 168.0
+spawn_area_y = 120.0
+
+[node name="FoodSpawner22" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(712, -1448)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 80.0
+spawn_area_y = 113.0
+
+[node name="FoodSpawner23" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(1024, -1488)
+foods = Array[PackedScene]([ExtResource("5_mnvb7"), ExtResource("6_ugtr7")])
+max_foods = 25
+spawn_area_x = 144.0
+spawn_area_y = 144.0
 
 [node name="Player" parent="." instance=ExtResource("5_x5jwk")]
 position = Vector2(152, -120)
