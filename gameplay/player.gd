@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal ate_boid(boid)
+
 var hostiles := []
 var identifiedFood := []
 var onLand : bool = true
@@ -9,12 +11,13 @@ var islands = PlayerVariables.islands.duplicate()
 var visitedIslands := []
 var retargetTime := 0.0
 var retargetBool = true
+var attackCooldown = 0.0
 
 var vel := Vector2.ZERO
 var speed := 15.0
 var lifeTime = 0.0
 const minSpeed := 15.0
-const maxSpeed := 80.0
+const maxSpeed := 180.0
 const viewRect := Rect2(0, 0, 320, 320)
 
 @onready var screensize := get_viewport_rect().size
@@ -94,12 +97,25 @@ func _physics_process(delta):
 			visitedIslands.append(target)
 	
 	#avoid enemies
-	if pathingState == PathingState.DEFAULT and hostiles:
+	if !PlayerVariables.can_eat_birds and hostiles\
+	or hp < 50:
 		for enemy in hostiles:
 			var repulsion : Vector2 = (global_position - enemy.global_position) \
 			/ global_position.distance_squared_to(enemy.global_position)
 				
 			vel += repulsion
+	elif PlayerVariables.can_eat_birds and hostiles and is_zero_approx(attackCooldown):
+		pathingState = PathingState.AGGRESSIVE
+		var closest = hostiles[0]
+		var dist = global_position.distance_to(closest.global_position)
+		for enemy in hostiles:
+			var newDist = global_position.distance_to(enemy.global_position)
+			if newDist < dist:
+				dist = newDist
+		var hunt : Vector2 = closest.global_position - global_position
+		vel += hunt.normalized()
+	else:
+		pathingState = PathingState.DEFAULT
 	
 	#stay on land
 	if !onLand:
@@ -127,6 +143,7 @@ func _physics_process(delta):
 	blinkStateManager(delta * -1)
 	lifeTime += delta
 	retargetTime = max(0.0, retargetTime - delta)
+	attackCooldown = max(0.0, attackCooldown - delta)
 	hp += hpDelta(delta * (lifeTime) * -1)
 
 
@@ -167,6 +184,7 @@ func _on_body_area_entered(area):
 		if blinkState == BlinkState.DEFAULT:
 			hp += hpDelta(-1)
 			blinkStateManager(1)
+			eatBoid(area)
 
 func _on_body_area_exited(area):
 	if area.is_in_group("island"):
@@ -175,6 +193,10 @@ func _on_body_area_exited(area):
 
 func consume(value : int):
 	hp += hpDelta(value)
+
+func eatBoid(boid):
+	attackCooldown = 2.0
+	ate_boid.emit(boid)
 
 func blinkStateManager(duration : float):
 	if blinkState == BlinkState.DEFAULT and duration > 0:

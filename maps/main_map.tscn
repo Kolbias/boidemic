@@ -1847,3 +1847,5 @@ islands = [Vector2(530, 150), Vector2(1225, -120), Vector2(-64, -520), Vector2(5
 [node name="BirdBrain" type="Node2D" parent="."]
 position = Vector2(-7360, -7424)
 script = ExtResource("7_b5cso")
+
+[connection signal="ate_boid" from="Player" to="BirdBrain" method="_on_player_ate_boid"]
