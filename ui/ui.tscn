@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfvpt71ravmij"]
+[gd_scene load_steps=8 format=3 uid="uid://bfvpt71ravmij"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_105e6"]
+[ext_resource type="Texture2D" uid="uid://cpxi6o7tgbygx" path="res://assets/art/upgrades/HealthUpgrade.png" id="2_jux8h"]
+[ext_resource type="Texture2D" uid="uid://57m65lec52tw" path="res://assets/art/upgrades/SpeedUpgrade.png" id="3_i1bp1"]
+[ext_resource type="Texture2D" uid="uid://d2b5kv0lrt4g6" path="res://assets/art/upgrades/BlinkCountUpgrade.png" id="4_vqay8"]
+[ext_resource type="Texture2D" uid="uid://l7i1buqmjokp" path="res://assets/art/upgrades/BlinkTimeUpgrade.png" id="5_we8c0"]
+[ext_resource type="Texture2D" uid="uid://dxyrqqehuot3e" path="res://assets/art/upgrades/MiceFoodUpgrade.png" id="6_gw3l6"]
+[ext_resource type="Texture2D" uid="uid://byvuu88v0clev" path="res://assets/art/upgrades/MinFlockUpgrade.png" id="7_75ooc"]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_105e6")
@@ -86,7 +92,7 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
 layout_mode = 2
-text = "Upgrade 1
+text = "Health +
 "
 horizontal_alignment = 1
 
@@ -95,9 +101,14 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1/Panel"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_jux8h")
+offset = Vector2(25, 25)
+
 [node name="max_hp_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
 layout_mode = 2
-text = "Button 1"
+text = "Upgrade"
 
 [node name="VBoxUpgrade2" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
 layout_mode = 2
@@ -105,7 +116,7 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
 layout_mode = 2
-text = "Upgrade 2
+text = "Speed +
 "
 horizontal_alignment = 1
 
@@ -114,9 +125,14 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2/Panel"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_i1bp1")
+offset = Vector2(25, 25)
+
 [node name="max_speed_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
 layout_mode = 2
-text = "Button 2"
+text = "Upgrade"
 
 [node name="VBoxUpgrade3" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
 layout_mode = 2
@@ -126,7 +142,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
 layout_mode = 2
-text = "Upgrade 3"
+text = "Dodge #"
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
@@ -134,9 +150,15 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3/Panel"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_vqay8")
+offset = Vector2(25, 25)
+
 [node name="blink_count_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
 layout_mode = 2
-text = "Button 3"
+text = "Upgrade
+"
 
 [node name="VBoxUpgrade4" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
 layout_mode = 2
@@ -146,7 +168,8 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
 layout_mode = 2
-text = "Upgrade 3"
+text = "Recover time
+"
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
@@ -154,9 +177,15 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4/Panel"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_we8c0")
+offset = Vector2(25, 25)
+
 [node name="blink_time_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
 layout_mode = 2
-text = "Button 3"
+text = "Upgrade
+"
 
 [node name="VBoxUpgrade5" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
 layout_mode = 2
@@ -166,7 +195,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
 layout_mode = 2
-text = "Upgrade 3"
+text = "New Food"
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
@@ -174,9 +203,14 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5/Panel"]
+scale = Vector2(2, 2)
+texture = ExtResource("6_gw3l6")
+offset = Vector2(25, 25)
+
 [node name="min_flock_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
 layout_mode = 2
-text = "Button 3"
+text = "Upgrade"
 
 [node name="VBoxUpgrade6" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
 layout_mode = 2
@@ -186,7 +220,8 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
 layout_mode = 2
-text = "Upgrade 3"
+text = "Flock Danger
+"
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
@@ -194,9 +229,15 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6/Panel"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_75ooc")
+offset = Vector2(25, 25)
+
 [node name="food_level_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
 layout_mode = 2
-text = "Button 3"
+text = "Upgrade
+"
 
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1/max_hp_Button" to="." method="_on_max_hp_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2/max_speed_Button" to="." method="_on_max_speed_button_pressed"]
