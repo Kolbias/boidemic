@@ -1,5 +1,7 @@
 extends Node
 
+signal upgrade_stat
+
 #player stats
 @export var resource_amount := 0
 @export var max_hp := 5000000.0
@@ -50,3 +52,10 @@ const default_hp := 50.0
 const default_blinks := 1
 const default_blink_time := 1.0
 const default_flock := 2
+
+func _ready():
+	self.connect("upgrade_stat", _on_upgrade_stat)
+	
+	
+func _on_upgrade_stat():
+	print("Health Increased or some shit idk")

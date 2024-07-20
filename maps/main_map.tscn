@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dvx4w44xvlq8g"]
+[gd_scene load_steps=17 format=3 uid="uid://dvx4w44xvlq8g"]
 
 [ext_resource type="Texture2D" uid="uid://dqt6sj6w7w1gd" path="res://assets/art/tilesets/WaterTileAnimation.png" id="1_1i7tk"]
 [ext_resource type="Texture2D" uid="uid://b8viuij4po6yx" path="res://assets/art/tilesets/ShallowWaterAnimation.png" id="2_ck01w"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://wfxpjfhgish2" path="res://gameplay/PlayerData.tscn" id="7_6m3on"]
 [ext_resource type="Script" path="res://gameplay/BirdBrain.gd" id="7_b5cso"]
 [ext_resource type="PackedScene" uid="uid://cbw6lidxp12kc" path="res://gameplay/crab_collectable.tscn" id="7_pfneq"]
+[ext_resource type="PackedScene" uid="uid://ct2vt6rmcl1uv" path="res://gameplay/cloud.tscn" id="11_5thw8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t6ky0"]
 texture = ExtResource("1_1i7tk")
@@ -1662,12 +1663,33 @@ max_foods = 25
 spawn_area_x = 575.0
 spawn_area_y = 700.0
 
-[node name="FoodSpawner27" parent="." instance=ExtResource("4_vbvff")]
+[node name="CrabSpawner" parent="." instance=ExtResource("4_vbvff")]
 position = Vector2(-312, -296)
 foods = Array[PackedScene]([ExtResource("7_pfneq")])
 max_foods = 25
 spawn_area_x = 96.0
 spawn_area_y = 192.0
+
+[node name="CrabSpawner2" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(32, -608)
+foods = Array[PackedScene]([ExtResource("7_pfneq")])
+max_foods = 25
+spawn_area_x = 260.0
+spawn_area_y = 90.0
+
+[node name="CrabSpawner3" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(96, 156)
+foods = Array[PackedScene]([ExtResource("7_pfneq")])
+max_foods = 25
+spawn_area_x = 240.0
+spawn_area_y = 90.0
+
+[node name="CrabSpawner4" parent="." instance=ExtResource("4_vbvff")]
+position = Vector2(384, -344)
+foods = Array[PackedScene]([ExtResource("7_pfneq")])
+max_foods = 25
+spawn_area_x = 64.0
+spawn_area_y = 330.0
 
 [node name="FoodSpawner3" parent="." instance=ExtResource("4_vbvff")]
 position = Vector2(-568, -896)
@@ -1847,5 +1869,14 @@ islands = [Vector2(530, 150), Vector2(1225, -120), Vector2(-64, -520), Vector2(5
 [node name="BirdBrain" type="Node2D" parent="."]
 position = Vector2(-7360, -7424)
 script = ExtResource("7_b5cso")
+
+[node name="Cloud" parent="." instance=ExtResource("11_5thw8")]
+position = Vector2(568, -576)
+
+[node name="Cloud2" parent="." instance=ExtResource("11_5thw8")]
+position = Vector2(872, -664)
+
+[node name="Cloud3" parent="." instance=ExtResource("11_5thw8")]
+position = Vector2(976, -400)
 
 [connection signal="ate_boid" from="Player" to="BirdBrain" method="_on_player_ate_boid"]

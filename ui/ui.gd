@@ -35,3 +35,7 @@ func _on_upgrades_button_down():
 		display_window()
 		is_visible = true
 
+
+
+func _on_button_pressed():
+	PlayerVariables.emit_signal("upgrade_stat")

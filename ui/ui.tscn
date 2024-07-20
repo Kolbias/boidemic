@@ -139,3 +139,4 @@ layout_mode = 2
 text = "Button 3"
 
 [connection signal="button_down" from="Control/TopLeftMargin/VBoxContainer/Upgrades" to="." method="_on_upgrades_button_down"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1/Button" to="." method="_on_button_pressed"]
