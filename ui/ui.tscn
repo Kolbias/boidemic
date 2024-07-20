@@ -95,7 +95,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
+[node name="max_hp_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
 layout_mode = 2
 text = "Button 1"
 
@@ -114,7 +114,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
+[node name="max_speed_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
 layout_mode = 2
 text = "Button 2"
 
@@ -134,9 +134,73 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
+[node name="blink_count_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
 layout_mode = 2
 text = "Button 3"
 
-[connection signal="button_down" from="Control/TopLeftMargin/VBoxContainer/Upgrades" to="." method="_on_upgrades_button_down"]
-[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1/Button" to="." method="_on_button_pressed"]
+[node name="VBoxUpgrade4" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
+layout_mode = 2
+text = "Upgrade 3"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="blink_time_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
+layout_mode = 2
+text = "Button 3"
+
+[node name="VBoxUpgrade5" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
+layout_mode = 2
+text = "Upgrade 3"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="min_flock_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
+layout_mode = 2
+text = "Button 3"
+
+[node name="VBoxUpgrade6" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
+layout_mode = 2
+text = "Upgrade 3"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="food_level_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
+layout_mode = 2
+text = "Button 3"
+
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1/max_hp_Button" to="." method="_on_max_hp_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2/max_speed_Button" to="." method="_on_max_speed_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3/blink_count_Button" to="." method="_on_blink_count_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4/blink_time_Button" to="." method="_on_blink_time_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5/min_flock_Button" to="." method="_on_min_flock_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6/food_level_Button" to="." method="_on_food_level_button_pressed"]

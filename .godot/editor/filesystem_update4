@@ -1,6 +1,5 @@
 res://maps/main_map.tscn
 res://gameplay/BirdBrain.gd
 res://gameplay/player_variables.gd
-res://save_load.gd
-res://gameplay/player.gd
-res://gameplay/enemy_boid.gd
+res://ui/ui.gd
+res://ui/ui.tscn
