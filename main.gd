@@ -11,7 +11,6 @@ func on_death():
 	get_tree().paused = true
 	$UI/Control/MarginContainer/MarginContainer/UpgradePanel.show()
 
-
 func on_reset():
 	PlayerVariables.num_generations += 1
 	if get_tree().paused == true:

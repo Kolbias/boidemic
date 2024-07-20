@@ -14,6 +14,7 @@ extends CanvasLayer
 
 var is_visible := false
 var is_clickable := true
+@onready var active = true
 
 func _ready():
 	$Control/MarginContainer/MarginContainer/UpgradePanel.hide()
@@ -23,8 +24,10 @@ func _ready():
 		"res://assets/art/upgrades/CrabFoodUpgrade.png",
 		"res://assets/art/upgrades/MinFlockUpgrade.png"
 	]
-	if PlayerVariables.upgrade_levels["food_level"] < 4:
+	if PlayerVariables.upgrade_levels["food_level"] < 4 && PlayerVariables.upgrade_levels["food_level"] > 0:
 		sprite.texture = load(textures[PlayerVariables.upgrade_levels["food_level"] - 1])
+	elif PlayerVariables.upgrade_levels["food_level"] == 4:
+		$Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5.hide()
 
 func _process(delta):
 	hp_label.text = "HP: " + str(int(PlayerVariables.current_hp))
@@ -148,6 +151,13 @@ func _on_food_level_button_pressed():
 		PlayerVariables.upgrade_levels[upgrade_name] += 1
 		if PlayerVariables.upgrade_levels[upgrade_name] < 4:
 			sprite.texture = load(textures[PlayerVariables.upgrade_levels[upgrade_name] - 1])
+		else:
+			$Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5.hide()
 
 func _on_reset_button_pressed():
-	PlayerVariables.reset.emit()
+	if active:
+		active = false
+		PlayerVariables.dead.emit()
+	else:
+		PlayerVariables.reset.emit()
+
