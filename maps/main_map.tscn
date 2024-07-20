@@ -1870,13 +1870,42 @@ islands = [Vector2(530, 150), Vector2(1225, -120), Vector2(-64, -520), Vector2(5
 position = Vector2(-7360, -7424)
 script = ExtResource("7_b5cso")
 
-[node name="Cloud" parent="." instance=ExtResource("11_5thw8")]
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="Cloud" parent="Clouds" instance=ExtResource("11_5thw8")]
 position = Vector2(568, -576)
 
-[node name="Cloud2" parent="." instance=ExtResource("11_5thw8")]
+[node name="Cloud2" parent="Clouds" instance=ExtResource("11_5thw8")]
 position = Vector2(872, -664)
 
-[node name="Cloud3" parent="." instance=ExtResource("11_5thw8")]
+[node name="Cloud3" parent="Clouds" instance=ExtResource("11_5thw8")]
+position = Vector2(-104, -1248)
+
+[node name="Cloud4" parent="Clouds" instance=ExtResource("11_5thw8")]
+position = Vector2(600, -1768)
+
+[node name="Cloud5" parent="Clouds" instance=ExtResource("11_5thw8")]
 position = Vector2(976, -400)
+
+[node name="Cloud6" parent="Clouds" instance=ExtResource("11_5thw8")]
+position = Vector2(-96, -1688)
+
+[node name="Cloud7" parent="Clouds" instance=ExtResource("11_5thw8")]
+position = Vector2(1520, -1560)
+
+[node name="Cloud8" parent="Clouds" instance=ExtResource("11_5thw8")]
+position = Vector2(352, -864)
+
+[node name="Cloud9" parent="Clouds" instance=ExtResource("11_5thw8")]
+position = Vector2(328, -1296)
+
+[node name="Cloud10" parent="Clouds" instance=ExtResource("11_5thw8")]
+position = Vector2(1528, -776)
+
+[node name="Cloud11" parent="Clouds" instance=ExtResource("11_5thw8")]
+position = Vector2(760, -1184)
+
+[node name="Cloud12" parent="Clouds" instance=ExtResource("11_5thw8")]
+position = Vector2(1384, -1032)
 
 [connection signal="ate_boid" from="Player" to="BirdBrain" method="_on_player_ate_boid"]
