@@ -6,8 +6,6 @@ const boidConst : PackedScene = preload("res://gameplay/enemy_boid.tscn")
 @onready var parentScene := get_parent()
 @onready var spawn_state := SpawnState.SPAWNING
 @onready var screensize = parentScene.get_viewport_rect().size
-@onready var boidTree := Quadtree.new(Rect2(0, 0, screensize.x, screensize.y))
-@onready var playerFog := Quadtree.new(Rect2(0, 0, screensize.x, screensize.y))
 @onready var islands := PlayerVariables.islands.duplicate()
 var targetNumBoids = PlayerVariables.num_boids
 var firstBoid = true
@@ -24,10 +22,15 @@ enum SpawnState {
 
 var boidArray = []
 
-#debug drawing
-#func _draw():
-	#for island in islands:
-		#draw_circle(island, 10, Color.RED)
+func reset():
+	#for boid in boidArray:
+		#boid.queue_free()
+		#boidArray.erase(boid)
+	get_tree().reload_current_scene()
+	#player.queue_free()
+	#player = playerSceneConst.instantiate()
+	#_ready()
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

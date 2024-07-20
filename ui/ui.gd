@@ -1,19 +1,9 @@
 extends CanvasLayer
 
-signal upgrade_stat
-
 @onready var hp_label = $Control/TopLeftMargin/VBoxContainer/HPLabel
 @onready var upgrade_panel = $Control/MarginContainer/MarginContainer/UpgradePanel
 @onready var margin_container = $Control/MarginContainer/MarginContainer
-
-@onready var buttons = [
-	$Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1/max_hp_Button,
-	$Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2/max_speed_Button,
-	$Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3/blink_count_Button,
-	$Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4/blink_time_Button,
-	$Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5/min_flock_Button,
-	$Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6/food_level_Button
-]
+@onready var res_label = $Control/TopLeftMargin/VBoxContainer/ResourceLabel
 
 var is_visible := false
 var is_clickable := true
@@ -24,6 +14,8 @@ func _ready():
 
 func _process(delta):
 	hp_label.text = "HP: " + str(int(PlayerVariables.current_hp))
+	res_label.text = "Resources: " + str(PlayerVariables.resource_amount)
+
 func display_window():
 	upgrade_panel.show()
 	var tween = create_tween()
@@ -121,8 +113,13 @@ func _on_min_flock_button_pressed():
 
 func _on_food_level_button_pressed():
 	var upgrade_name = "food_level"
+	if PlayerVariables.upgrade_levels[upgrade_name] >= 4: return
 	var this_level = PlayerVariables.upgrade_levels[upgrade_name]
 	if PlayerVariables.resource_amount >= \
 	PlayerVariables.upgrade_prices[5][this_level]:
-		PlayerVariables.resource_amount -= PlayerVariables.upgrade_prices[0][this_level]
+		PlayerVariables.resource_amount -= PlayerVariables.upgrade_prices[5][this_level]
 		PlayerVariables.upgrade_levels[upgrade_name] += 1
+
+
+func _on_reset_button_pressed():
+	PlayerVariables.reset.emit()
