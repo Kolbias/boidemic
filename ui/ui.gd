@@ -16,6 +16,8 @@ var is_visible := false
 var is_clickable := true
 
 func _ready():
+	PlayerVariables.connect("victory", _on_win)
+	PlayerVariables.connect("dead", _on_died)
 	$Control/MarginContainer/MarginContainer/UpgradePanel.hide()
 	var sprite : Sprite2D = $Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5/Panel/Sprite2D
 	var textures = [
@@ -151,3 +153,10 @@ func _on_food_level_button_pressed():
 
 func _on_reset_button_pressed():
 	PlayerVariables.reset.emit()
+
+func _on_died():
+	$Control/CenterContainer/Label.show()
+
+func _on_win():
+	$Control/CenterContainer/Label.text = "You win!"
+	$Control/CenterContainer/Label.show()

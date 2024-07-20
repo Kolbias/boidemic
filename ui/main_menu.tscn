@@ -137,7 +137,6 @@ position = Vector2(-344, 464)
 [node name="MainBoid" type="AnimatedSprite2D" parent="."]
 position = Vector2(334, 840)
 rotation = 0.785398
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_0n8en")
 autoplay = "default"
 frame_progress = 0.79672
