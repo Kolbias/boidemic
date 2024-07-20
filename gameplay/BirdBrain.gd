@@ -7,7 +7,7 @@ const boidConst : PackedScene = preload("res://gameplay/enemy_boid.tscn")
 @onready var spawn_state := SpawnState.SPAWNING
 @onready var screensize = parentScene.get_viewport_rect().size
 @onready var islands := PlayerVariables.islands.duplicate()
-var targetNumBoids = PlayerVariables.num_boids
+@onready var targetNumBoids = PlayerVariables.num_boids
 var firstBoid = true
 var spawnCooldown := 0.0
 
@@ -113,10 +113,12 @@ func islandSort(a : Vector2, b : Vector2):
 func _on_player_ate_boid(boid):
 	boid.queue_free()
 	boidArray.erase(boid)
-	targetNumBoids -= 1
+	PlayerVariables.num_boids = max(0, PlayerVariables.num_boids - 1)
+	targetNumBoids = PlayerVariables.num_boids
 	for enemy in boidArray:
 		if enemy.global_position.distance_to(player.global_position) < 200:
 			enemy.vel += enemy.global_position - player.global_position / \
 			(enemy.global_position.distance_squared_to(player.global_position))
-	print("ate boid")
-	print(boidArray.size())
+	if PlayerVariables.num_boids == 0:
+		PlayerVariables.victory.emit()
+	print(targetNumBoids)

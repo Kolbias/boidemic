@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxs2gtonupruv"]
+[gd_scene load_steps=15 format=3 uid="uid://bxs2gtonupruv"]
 
 [ext_resource type="Script" path="res://gameplay/enemy_boid.gd" id="1_dudh2"]
 [ext_resource type="Texture2D" uid="uid://yjlbu01ktsk2" path="res://assets/art/anim/enemy/EnemyBoid1.png" id="2_bxpog"]
@@ -51,6 +51,9 @@ radius = 74.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_txxp4"]
 radius = 72.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir8d2"]
+size = Vector2(114, 128)
+
 [node name="EnemyBoid" type="Area2D" groups=["enemyBoid"]]
 rotation = -6.28318
 collision_mask = 129
@@ -68,7 +71,7 @@ frame_progress = 0.230412
 [node name="FieldOfView" type="Area2D" parent="."]
 
 [node name="FOVCollision" type="CollisionPolygon2D" parent="FieldOfView"]
-polygon = PackedVector2Array(0, 0, 23.9998, -40.0001, 36.9997, -64.0002, 52.9997, -52.0003, 63.9998, -37.0003, 70.9999, -19.0004, 74, 0.999626, 71.0001, 22.9996, 62.0002, 41.9997, 52.0003, 52.9997, 36.0003, 64.9998, 16.0002, 31.9999)
+polygon = PackedVector2Array(0, 0, 15.9998, -48.0001, 15.9996, -72.0001, 36.9997, -64.0002, 52.9997, -52.0003, 63.9998, -37.0003, 70.9999, -19.0004, 74, 0.999626, 71.0001, 22.9996, 62.0002, 41.9997, 52.0003, 52.9997, 24.0004, 71.9999, 16.0002, 47.9999)
 
 [node name="_TracerShape" type="CollisionShape2D" parent="FieldOfView"]
 shape = SubResource("CircleShape2D_ibnge")
@@ -79,6 +82,12 @@ disabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flock"]
 shape = SubResource("CircleShape2D_txxp4")
 
+[node name="PlayerTracker" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTracker"]
+position = Vector2(55, -0.000443094)
+shape = SubResource("RectangleShape2D_ir8d2")
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
@@ -88,3 +97,5 @@ shape = SubResource("CircleShape2D_txxp4")
 [connection signal="area_entered" from="Flock" to="." method="_on_flock_area_entered"]
 [connection signal="area_exited" from="Flock" to="." method="_on_flock_area_exited"]
 [connection signal="body_exited" from="Flock" to="." method="_on_flock_body_exited"]
+[connection signal="body_entered" from="PlayerTracker" to="." method="_on_player_tracker_body_entered"]
+[connection signal="body_exited" from="PlayerTracker" to="." method="_on_player_tracker_body_exited"]

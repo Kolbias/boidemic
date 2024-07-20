@@ -17,13 +17,12 @@ var vel := Vector2.ZERO
 var speed := 15.0
 var lifeTime = 0.0
 const minSpeed := 15.0
-const maxSpeed := 180.0
+var maxSpeed := 0.0
 const viewRect := Rect2(0, 0, 320, 320)
 
 @onready var screensize := get_viewport_rect().size
 @onready var size : float = $BodyCollision.shape.radius
 
-var blinks := 0
 var blinkTime := 0.0
 
 enum BlinkState {
@@ -39,7 +38,34 @@ enum PathingState {
 }
 var pathingState := PathingState.DEFAULT
 
+
+func set_player_values():
+	var player = PlayerVariables
+	player.max_hp = player.default_hp + (player.upgrade_levels["max_hp"] * 10)
+	player.max_speed = player.default_speed + (player.upgrade_levels["max_speed"] * 6)
+	player.blink_count = player.default_blinks + player.upgrade_levels["blink_count"]
+	player.blink_time = player.default_blink_time + (player.upgrade_levels["blink_time"] * 0.5)
+	player.min_flock = player.default_flock + player.upgrade_levels["min_flock"]
+	
+	match player.upgrade_levels["food_level"]:
+		1:
+			player.can_eat_mice = true
+		2:
+			player.can_eat_mice = true
+			player.can_eat_fish = true
+		3:
+			player.can_eat_mice = true
+			player.can_eat_crab = true
+			player.can_eat_fish = true
+		4:
+			player.can_eat_mice = true
+			player.can_eat_crab = true
+			player.can_eat_fish = true
+			player.can_eat_birds = true
+
+
 func _ready():
+	set_player_values()
 	islands.sort_custom(islandSort)
 	var startRotation := randf_range(0, TAU)
 	global_rotation = startRotation
@@ -47,29 +73,32 @@ func _ready():
 	
 	PlayerVariables.current_hp = PlayerVariables.max_hp
 
-	blinks = PlayerVariables.blink_count
+	PlayerVariables.remaining_blinks = PlayerVariables.blink_count
 	blinkTime = PlayerVariables.blink_time
+	maxSpeed = PlayerVariables.max_speed
 
 func _physics_process(delta):
 	#debug to show pathing state
-	if pathingState == PathingState.AGGRESSIVE:
-		modulate = Color(1, 0, 0, 1)
-	elif blinkState == BlinkState.BLINK:
-		modulate = Color(0, 0, 1, 1)
-	else:
-		modulate = Color(1, 1, 1, 1)
+	#if pathingState == PathingState.AGGRESSIVE:
+		#modulate = Color(1, 0, 0, 1)
+	#elif blinkState == BlinkState.BLINK:
+		#modulate = Color(0, 0, 1, 1)
+	#else:
+		#modulate = Color(1, 1, 1, 1)
 	
 	#print("hp: " + str(hp) + " currentHp " + str(PlayerVariables.current_hp))
 	
 	#are you dead?
 	if PlayerVariables.current_hp < 0:
 		PlayerVariables.dead.emit()
+		hide()
 	
 	#eat known food
 	if identifiedFood:
 		#print("I am targeting known food")
-		var target = identifiedFood.front()
-		vel += (target.global_position - global_position).normalized()
+		if identifiedFood.front() != null:
+			var target = identifiedFood.front()
+			vel += (target.global_position - global_position).normalized()
 		
 	else:
 		#look for food
@@ -112,7 +141,7 @@ func _physics_process(delta):
 			if newDist < dist:
 				dist = newDist
 		var hunt : Vector2 = closest.global_position - global_position
-		vel += hunt.normalized()
+		vel = hunt.normalized()
 	else:
 		pathingState = PathingState.DEFAULT
 	
@@ -181,9 +210,10 @@ func _on_body_area_entered(area):
 			area.queue_free()
 	elif area.is_in_group("enemyBoid"):
 		if blinkState == BlinkState.DEFAULT:
-			PlayerVariables.current_hp += -1
+			PlayerVariables.current_hp += -5
 			blinkStateManager(1)
-			eatBoid(area)
+			if PlayerVariables.can_eat_birds:
+				eatBoid(area)
 
 func _on_body_area_exited(area):
 	if area.is_in_group("island"):
@@ -195,7 +225,8 @@ func consume(value : int):
 	PlayerVariables.resource_amount += value
 
 func eatBoid(boid):
-	attackCooldown = 2.0
+	attackCooldown = 1.0
+	consume(100)
 	ate_boid.emit(boid)
 
 func blinkStateManager(duration : float):
@@ -211,8 +242,8 @@ func blinkStateManager(duration : float):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		#print(event)
-		if blinks > 0:
-			blinks -= 1
+		if PlayerVariables.remaining_blinks > 0:
+			PlayerVariables.remaining_blinks -= 1
 			pathingState = PathingState.AGGRESSIVE
 			blinkStateManager(blinkTime)
 
