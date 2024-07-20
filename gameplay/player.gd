@@ -12,6 +12,7 @@ var visitedIslands := []
 var retargetTime := 0.0
 var retargetBool = true
 var attackCooldown = 0.0
+var taken_hit := 0.5
 
 var vel := Vector2.ZERO
 var speed := 15.0
@@ -78,6 +79,7 @@ func _ready():
 	maxSpeed = PlayerVariables.max_speed
 
 func _physics_process(delta):
+	#modulate = Color(1,1,1,1)
 	#debug to show pathing state
 	#if pathingState == PathingState.AGGRESSIVE:
 		#modulate = Color(1, 0, 0, 1)
@@ -173,7 +175,9 @@ func _physics_process(delta):
 	retargetTime = max(0.0, retargetTime - delta)
 	attackCooldown = max(0.0, attackCooldown - delta)
 	PlayerVariables.current_hp += delta * (lifeTime * -1)
-
+	taken_hit = max(0.0, taken_hit - delta)
+	if taken_hit == 0.0:
+		modulate = lerp(Color(1,0,0,1), Color(1,1,1,1), 1.0)
 
 func _on_field_of_view_area_entered(area):
 	if area.is_in_group("enemyBoid"):
@@ -210,6 +214,8 @@ func _on_body_area_entered(area):
 			area.queue_free()
 	elif area.is_in_group("enemyBoid"):
 		if blinkState == BlinkState.DEFAULT:
+			modulate = lerp(Color(1,1,1,1), Color(1,0,0,1), 1.0)
+			taken_hit = 0.5
 			PlayerVariables.current_hp += -5
 			blinkStateManager(1)
 			if PlayerVariables.can_eat_birds:

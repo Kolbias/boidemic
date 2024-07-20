@@ -38,7 +38,7 @@ var upgrade_prices = [
 
 #enemy stats
 @export var min_flock = 2
-@export var num_boids = 5
+@export var num_boids = 30
 
 #map data
 @export var islands := [
