@@ -4,3 +4,4 @@
 
 [resource]
 default_font = ExtResource("1_a3skh")
+/fonts/font = ExtResource("1_a3skh")
