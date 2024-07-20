@@ -1871,6 +1871,7 @@ position = Vector2(-7360, -7424)
 script = ExtResource("7_b5cso")
 
 [node name="Clouds" type="Node2D" parent="."]
+process_priority = 1
 
 [node name="Cloud" parent="Clouds" instance=ExtResource("11_5thw8")]
 position = Vector2(568, -576)
