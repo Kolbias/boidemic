@@ -44,13 +44,13 @@ func _physics_process(delta):
 	if goodBoid:
 		print(stance)
 	
-	match stance:
-		stanceState.ATTACKING:
-			modulate = Color(1, 0, 0, 1)
-		stanceState.FLEEING:
-			modulate = Color(0, 0, 1, 1)
-		_:
-			modulate = Color(1, 1, 1, 1)
+	#match stance:
+		#stanceState.ATTACKING:
+			#modulate = Color(1, 0, 0, 1)
+		#stanceState.FLEEING:
+			#modulate = Color(0, 0, 1, 1)
+		#_:
+			#modulate = Color(1, 1, 1, 1)
 	
 	var separation := Vector2.ZERO
 	var alignment := Vector2.ZERO

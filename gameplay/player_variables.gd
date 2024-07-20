@@ -5,7 +5,7 @@ signal reset
 signal victory
 
 #player stats
-@export var resource_amount := 100000
+@export var resource_amount := 0
 @export var max_hp := 25.0
 var current_hp := max_hp
 var remaining_blinks := blink_count
@@ -38,7 +38,7 @@ var upgrade_prices = [
 
 #enemy stats
 @export var min_flock = 2
-@export var num_boids = 5
+@export var num_boids = 30
 
 #map data
 @export var islands := [

@@ -15,6 +15,7 @@ process_mode = 3
 [node name="MainMap" parent="." instance=ExtResource("2_dd0l7")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("4_2p0iu")
 volume_db = -6.0
 autoplay = true
