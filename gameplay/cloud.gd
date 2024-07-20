@@ -11,7 +11,6 @@ func _ready():
 
 func _process(delta):
 	global_position += Vector2(rand_speed_x, rand_speed_y)
-	print(global_position)
 	if global_position.y > 9000 or global_position.x < 5000:
 		var new_pos = get_rand_pos()
 		global_position = new_pos

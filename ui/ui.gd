@@ -12,6 +12,7 @@ extends CanvasLayer
 @onready var flockcost_label = $Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6/FlockCostLabel
 @onready var foodcost_label = $Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5/FoodCostLabel
 
+var music_playing = false
 var is_visible := false
 var is_clickable := true
 @onready var active = true
@@ -164,8 +165,14 @@ func _on_reset_button_pressed():
 		PlayerVariables.reset.emit()
 
 func _on_died():
+	active = false
 	$Control/CenterContainer/Label.show()
 
 func _on_win():
-	$Control/CenterContainer/Label.text = "You win!"
+	$Control/CenterContainer/Label.text = "You won in " + str(PlayerVariables.num_generations) + " generations! \nRefresh to play again!"
 	$Control/CenterContainer/Label.show()
+	$Control/TopLeftMargin/VBoxContainer/ResetButton.hide()
+
+
+func _on_button_pressed():
+	get_parent().emit_signal("music_toggle")

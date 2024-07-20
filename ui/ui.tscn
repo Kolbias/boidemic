@@ -41,16 +41,25 @@ text = "HP:"
 
 [node name="ResourceLabel" type="Label" parent="Control/TopLeftMargin/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 text = "Resources:"
 
 [node name="BlinkLabel" type="Label" parent="Control/TopLeftMargin/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 text = "Resources:"
 
 [node name="ResetButton" type="Button" parent="Control/TopLeftMargin/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Fly Again"
+
+[node name="Button" type="Button" parent="Control/TopLeftMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Toggle Music"
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -319,6 +328,7 @@ theme_override_font_sizes/font_size = 24
 text = "Boid Perished"
 
 [connection signal="pressed" from="Control/TopLeftMargin/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Control/TopLeftMargin/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1/max_hp_Button" to="." method="_on_max_hp_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2/max_speed_Button" to="." method="_on_max_speed_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3/blink_count_Button" to="." method="_on_blink_count_button_pressed"]

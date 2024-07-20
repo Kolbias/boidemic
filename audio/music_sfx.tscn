@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfgahrixnrww5"]
+
+[ext_resource type="AudioStream" uid="uid://b1jmx5c2v3m12" path="res://assets/sounds/AerialAmbience_Example.mp3" id="1_ydji0"]
+
+[node name="MusicSFX" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_ydji0")
+volume_db = -6.0
+autoplay = true
