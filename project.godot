@@ -23,6 +23,10 @@ PlayerVariables="*res://gameplay/player_variables.gd"
 
 movie_writer/movie_file="C:/Users/kolby/Desktop/BoidemicPrev.avi"
 
+[gui]
+
+theme/custom="res://ui/bop_theme.tres"
+
 [input]
 
 Click={

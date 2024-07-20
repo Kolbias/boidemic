@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfvpt71ravmij"]
+[gd_scene load_steps=9 format=3 uid="uid://bfvpt71ravmij"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_105e6"]
+[ext_resource type="Theme" uid="uid://dj3yw2o3u5j7y" path="res://ui/bop_theme.tres" id="2_aeq67"]
 [ext_resource type="Texture2D" uid="uid://cpxi6o7tgbygx" path="res://assets/art/upgrades/HealthUpgrade.png" id="2_jux8h"]
 [ext_resource type="Texture2D" uid="uid://57m65lec52tw" path="res://assets/art/upgrades/SpeedUpgrade.png" id="3_i1bp1"]
 [ext_resource type="Texture2D" uid="uid://d2b5kv0lrt4g6" path="res://assets/art/upgrades/BlinkCountUpgrade.png" id="4_vqay8"]
@@ -19,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("2_aeq67")
 
 [node name="TopLeftMargin" type="MarginContainer" parent="Control"]
 layout_mode = 0
@@ -48,17 +50,16 @@ text = "Fly Again"
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -150.0
-offset_top = -137.5
+offset_top = -275.0
 offset_right = 150.0
-offset_bottom = 137.5
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer"]
@@ -67,7 +68,7 @@ mouse_filter = 2
 theme_override_constants/margin_left = 150
 theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 150
-theme_override_constants/margin_bottom = 75
+theme_override_constants/margin_bottom = 100
 
 [node name="UpgradePanel" type="Panel" parent="Control/MarginContainer/MarginContainer"]
 layout_mode = 2
@@ -96,8 +97,17 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Health +
 "
+horizontal_alignment = 1
+
+[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "$$"
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
@@ -120,8 +130,17 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Speed +
 "
+horizontal_alignment = 1
+
+[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "$$"
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
@@ -140,13 +159,20 @@ text = "Upgrade"
 
 [node name="VBoxUpgrade3" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox"]
 layout_mode = 2
-size_flags_horizontal = 4
 mouse_filter = 2
-alignment = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
 layout_mode = 2
-text = "Dodge #"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Dodge +"
+horizontal_alignment = 1
+
+[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "$$"
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
@@ -168,12 +194,19 @@ text = "Upgrade
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-alignment = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
 layout_mode = 2
-text = "Recover time
-"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Recover -"
+horizontal_alignment = 1
+
+[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "$$"
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
@@ -195,12 +228,21 @@ text = "Upgrade
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-alignment = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
 layout_mode = 2
-text = "Flock Danger
-"
+
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Food"
+horizontal_alignment = 1
+
+[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "$$"
+
 horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
@@ -222,14 +264,25 @@ text = "Upgrade
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-alignment = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
 layout_mode = 2
-text = "New Food"
+
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Danger -
+"
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
+[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "$$"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
+
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 mouse_filter = 2
