@@ -141,7 +141,22 @@ func _on_flock_area_exited(area):
 	if area != self and area.is_in_group("enemyBoid"):
 		flock.erase(area)
 
-func _on_field_of_view_body_entered(body):
+#func _on_field_of_view_body_entered(body):
+	#if body.is_in_group("player"):
+		#player = body
+		#if flock.size() > minFlock:
+			#stance = stanceState.ATTACKING
+		#else:
+			#stance = stanceState.FLEEING
+#
+#
+#func _on_flock_body_exited(body):
+	#if body.is_in_group("player"):
+		#player = null
+		#stance = stanceState.WANDERING
+
+
+func _on_player_tracker_body_entered(body):
 	if body.is_in_group("player"):
 		player = body
 		if flock.size() > minFlock:
@@ -150,7 +165,7 @@ func _on_field_of_view_body_entered(body):
 			stance = stanceState.FLEEING
 
 
-func _on_flock_body_exited(body):
+func _on_player_tracker_body_exited(body):
 	if body.is_in_group("player"):
 		player = null
 		stance = stanceState.WANDERING

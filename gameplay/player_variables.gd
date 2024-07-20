@@ -2,13 +2,15 @@ extends Node
 
 signal dead
 signal reset
+signal victory
 
 #player stats
-@export var resource_amount := 0
+@export var resource_amount := 100000
 @export var max_hp := 25.0
 var current_hp := max_hp
-@export var blink_count := 3
-@export var blink_time := 1.0
+var remaining_blinks := blink_count
+@export var blink_count := 1
+@export var blink_time := 0.5
 @export var can_eat_fish = false
 @export var can_eat_birds = false
 @export var can_eat_crab = false
@@ -26,17 +28,17 @@ var upgrade_levels = {
 }
 
 var upgrade_prices = [
-	[0, 1],
-	[1, 2, 3, 4, 5],
-	[1, 2, 3, 4, 5],
-	[1, 2, 3, 4, 5],
-	[1, 2, 3, 4, 5],
-	[1, 2, 3, 4, 5]
+	[2, 3],
+	[2, 3],
+	[5, 10],
+	[5, 10],
+	[5, 10],
+	[10, 25, 75, 400, 1500]
 ]
 
 #enemy stats
 @export var min_flock = 2
-@export var num_boids = 30
+@export var num_boids = 5
 
 #map data
 @export var islands := [
@@ -59,11 +61,8 @@ var upgrade_prices = [
 
 const default_res := 0
 const default_hp := 50.0
-const default_speed := 50.0
+const default_speed := 65.0
 const default_blinks := 1
-const default_blink_time := 1.0
+const default_blink_time := 0.5
 const default_flock := 2
-
-func _on_upgrade_stat():
-	print("Health Increased or some shit idk")
-
+var num_generations = 1

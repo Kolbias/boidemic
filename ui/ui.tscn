@@ -43,6 +43,10 @@ text = "HP:"
 layout_mode = 2
 text = "Resources:"
 
+[node name="BlinkLabel" type="Label" parent="Control/TopLeftMargin/VBoxContainer"]
+layout_mode = 2
+text = "Resources:"
+
 [node name="ResetButton" type="Button" parent="Control/TopLeftMargin/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -103,7 +107,7 @@ text = "Health +
 "
 horizontal_alignment = 1
 
-[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
+[node name="HpCostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade1"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -136,7 +140,7 @@ text = "Speed +
 "
 horizontal_alignment = 1
 
-[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
+[node name="SpeedCostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -168,7 +172,7 @@ theme_override_constants/outline_size = 4
 text = "Dodge +"
 horizontal_alignment = 1
 
-[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
+[node name="BlinkCountCostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -202,7 +206,7 @@ theme_override_constants/outline_size = 4
 text = "Recover -"
 horizontal_alignment = 1
 
-[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
+[node name="BlinkTimeCostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -233,10 +237,10 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-text = "Food"
+text = "Danger -"
 horizontal_alignment = 1
 
-[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
+[node name="FlockCostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -253,7 +257,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("7_75ooc")
 offset = Vector2(25, 25)
 
-[node name="food_level_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
+[node name="min_flock_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6"]
 layout_mode = 2
 text = "Upgrade
 "
@@ -267,11 +271,11 @@ mouse_filter = 2
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-text = "Danger -
+text = "Food +
 "
 horizontal_alignment = 1
 
-[node name="CostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
+[node name="FoodCostLabel" type="Label" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
@@ -288,7 +292,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("6_gw3l6")
 offset = Vector2(25, 25)
 
-[node name="min_flock_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
+[node name="food_level_Button" type="Button" parent="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5"]
 layout_mode = 2
 text = "Upgrade"
 
@@ -297,5 +301,5 @@ text = "Upgrade"
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade2/max_speed_Button" to="." method="_on_max_speed_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade3/blink_count_Button" to="." method="_on_blink_count_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade4/blink_time_Button" to="." method="_on_blink_time_button_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6/food_level_Button" to="." method="_on_food_level_button_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5/min_flock_Button" to="." method="_on_min_flock_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade6/min_flock_Button" to="." method="_on_min_flock_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/UpgradePanel/UpgradeHbox/VBoxUpgrade5/food_level_Button" to="." method="_on_food_level_button_pressed"]
