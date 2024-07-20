@@ -175,7 +175,7 @@ func _on_body_area_entered(area):
 		if area.is_in_group("worm") and PlayerVariables.can_eat_worms or \
 		area.is_in_group("fish") and PlayerVariables.can_eat_fish or \
 		area.is_in_group("mouse") and PlayerVariables.can_eat_mice or \
-		area.is_in_group("fruit") and PlayerVariables.can_eat_fruit:
+		area.is_in_group("crab") and PlayerVariables.can_eat_crab:
 			consume(area.resource_value)
 			identifiedFood.erase(area)
 			area.queue_free()
@@ -192,6 +192,7 @@ func _on_body_area_exited(area):
 
 func consume(value : int):
 	PlayerVariables.current_hp += value
+	PlayerVariables.resource_amount += value
 
 func eatBoid(boid):
 	attackCooldown = 2.0
@@ -220,7 +221,7 @@ func _on_food_radar_area_entered(area):
 		if area.is_in_group("worm") and PlayerVariables.can_eat_worms or \
 		area.is_in_group("fish") and PlayerVariables.can_eat_fish or \
 		area.is_in_group("mouse") and PlayerVariables.can_eat_mice or \
-		area.is_in_group("fruit") and PlayerVariables.can_eat_fruit:
+		area.is_in_group("crab") and PlayerVariables.can_eat_crab:
 			identifiedFood.append(area)
 			identifiedFood.sort_custom(areaSort)
 

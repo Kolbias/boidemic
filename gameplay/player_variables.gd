@@ -1,16 +1,17 @@
 extends Node
 
 signal dead
+signal reset
 
 #player stats
-@export var resource_amount := 100
-@export var max_hp := 1.0
+@export var resource_amount := 0
+@export var max_hp := 25.0
 var current_hp := max_hp
 @export var blink_count := 3
 @export var blink_time := 1.0
 @export var can_eat_fish = false
-@export var can_eat_birds = true
-@export var can_eat_fruit = false
+@export var can_eat_birds = false
+@export var can_eat_crab = false
 @export var can_eat_mice = false
 @export var max_speed = 22.0
 const can_eat_worms = true
@@ -58,6 +59,7 @@ var upgrade_prices = [
 
 const default_res := 0
 const default_hp := 50.0
+const default_speed := 50.0
 const default_blinks := 1
 const default_blink_time := 1.0
 const default_flock := 2

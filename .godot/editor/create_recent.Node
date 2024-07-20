@@ -1,5 +1,7 @@
-Node2D
 Node
+Button
+Label
+Node2D
 Camera2D
 Control
 ColorRect
@@ -10,4 +12,3 @@ CollisionPolygon2D
 RayCast2D
 Line2D
 Polygon2D
-TileMap
