@@ -17,7 +17,9 @@ signal upgrade_stat
 
 var is_visible := false
 var is_clickable := true
-#func _ready():
+
+func _ready():
+	$Control/MarginContainer/MarginContainer/UpgradePanel.hide()
 	#hide_window()
 
 func _process(delta):
@@ -52,7 +54,6 @@ func _on_max_hp_button_pressed():
 	var index = 0
 	var this_level = PlayerVariables.upgrade_levels[upgrade_name]
 	var cost = PlayerVariables.upgrade_prices[index][0] + PlayerVariables.upgrade_prices[index][1]
-	print("cost" + str(cost))
 	if PlayerVariables.resource_amount >= cost:
 		PlayerVariables.resource_amount -= cost
 		var first = PlayerVariables.upgrade_prices[index][0]

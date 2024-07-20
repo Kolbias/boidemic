@@ -9,6 +9,7 @@
 script = ExtResource("1_axfdb")
 
 [node name="UI" parent="." instance=ExtResource("2_e1q5f")]
+process_mode = 3
 
 [node name="MainMap" parent="." instance=ExtResource("2_dd0l7")]
 

@@ -22,9 +22,7 @@ const viewRect := Rect2(0, 0, 320, 320)
 
 @onready var screensize := get_viewport_rect().size
 @onready var size : float = $BodyCollision.shape.radius
-#@onready var fog := Quadtree.new(Rect2(Vector2.ZERO, Vector2(screensize.x, screensize.y)))
 
-var hp := 0.0
 var blinks := 0
 var blinkTime := 0.0
 
@@ -47,7 +45,7 @@ func _ready():
 	global_rotation = startRotation
 	vel = Vector2.from_angle(rotation)
 	
-	hp += hpDelta(PlayerVariables.max_hp)
+	PlayerVariables.current_hp = PlayerVariables.max_hp
 
 	blinks = PlayerVariables.blink_count
 	blinkTime = PlayerVariables.blink_time
@@ -61,10 +59,11 @@ func _physics_process(delta):
 	else:
 		modulate = Color(1, 1, 1, 1)
 	
+	#print("hp: " + str(hp) + " currentHp " + str(PlayerVariables.current_hp))
+	
 	#are you dead?
-	if hp < 0:
-		print("I died")
-		speed = 0
+	if PlayerVariables.current_hp < 0:
+		PlayerVariables.dead.emit()
 	
 	#eat known food
 	if identifiedFood:
@@ -98,7 +97,7 @@ func _physics_process(delta):
 	
 	#avoid enemies
 	if !PlayerVariables.can_eat_birds and hostiles\
-	or hp < 50:
+	or PlayerVariables.current_hp < 50:
 		for enemy in hostiles:
 			var repulsion : Vector2 = (global_position - enemy.global_position) \
 			/ global_position.distance_squared_to(enemy.global_position)
@@ -144,7 +143,7 @@ func _physics_process(delta):
 	lifeTime += delta
 	retargetTime = max(0.0, retargetTime - delta)
 	attackCooldown = max(0.0, attackCooldown - delta)
-	hp += hpDelta(delta * (lifeTime) * -1)
+	PlayerVariables.current_hp += delta * (lifeTime * -1)
 
 
 func _on_field_of_view_area_entered(area):
@@ -182,7 +181,7 @@ func _on_body_area_entered(area):
 			area.queue_free()
 	elif area.is_in_group("enemyBoid"):
 		if blinkState == BlinkState.DEFAULT:
-			hp += hpDelta(-1)
+			PlayerVariables.current_hp += -1
 			blinkStateManager(1)
 			eatBoid(area)
 
@@ -192,7 +191,7 @@ func _on_body_area_exited(area):
 		onLand = false
 
 func consume(value : int):
-	hp += hpDelta(value)
+	PlayerVariables.current_hp += value
 
 func eatBoid(boid):
 	attackCooldown = 2.0
@@ -236,7 +235,3 @@ func islandSort(a : Vector2, b : Vector2):
 	if a.distance_to(pos) > b.distance_to(pos):
 		return false
 	return true
-
-func hpDelta(value : float) -> float:
-	PlayerVariables.current_hp += value
-	return value
