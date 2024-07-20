@@ -1,9 +1,7 @@
 extends Node
 
-signal upgrade_stat
-
 #player stats
-@export var resource_amount := 0
+@export var resource_amount := 100
 @export var max_hp := 5000000.0
 var current_hp := max_hp
 @export var blink_count := 3
@@ -23,6 +21,15 @@ var upgrade_levels = {
 	"min_flock" : 0,
 	"food_level" : 0
 }
+
+var upgrade_prices = [
+	[0, 1],
+	[1, 2, 3, 4, 5],
+	[1, 2, 3, 4, 5],
+	[1, 2, 3, 4, 5],
+	[1, 2, 3, 4, 5],
+	[1, 2, 3, 4, 5]
+]
 
 #enemy stats
 @export var min_flock = 2
@@ -53,9 +60,9 @@ const default_blinks := 1
 const default_blink_time := 1.0
 const default_flock := 2
 
-func _ready():
-	self.connect("upgrade_stat", _on_upgrade_stat)
+#func _ready():
+	#self.connect("upgrade_stat", _on_upgrade_stat)
 	
-	
+
 func _on_upgrade_stat():
 	print("Health Increased or some shit idk")
