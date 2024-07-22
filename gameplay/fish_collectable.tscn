@@ -7,7 +7,7 @@
 radius = 8.0
 
 [node name="Fish" type="Area2D"]
-collision_layer = 4
+collision_layer = 5
 script = ExtResource("1_mh0c7")
 resource_value = 20
 

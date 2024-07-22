@@ -1,11 +1,9 @@
-res://main.tscn
+res://maps/main_map.tscn
 res://gameplay/BirdBrain.gd
 res://main.gd
-res://gameplay/player_variables.gd
-res://maps/main_map.tscn
-res://ui/ui.gd
 res://ui/ui.tscn
 res://ui/main_menu.tscn
+res://main.tscn
 res://gameplay/enemy_boid.tscn
-res://gameplay/player.gd
-res://gameplay/enemy_boid.gd
+res://gameplay/fish_collectable.tscn
+res://gameplay/food_spawner.gd
