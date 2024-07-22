@@ -38,8 +38,6 @@ func _on_timer_timeout():
 		new_food.position.y = randf_range(0, spawn_area_y)
 		min_rand_time += 0.5
 		max_rand_time += 1.0
-	if spawn_area_x * spawn_area_y > 250000:
-		printInfo()
 
 func set_max_spawns():
 	var area = spawn_area_x * spawn_area_y
