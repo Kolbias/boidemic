@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxnl516pko0fh"]
 
-[ext_resource type="Script" path="res://gameplay/food_spawner.gd" id="1_fxhnt"]
+[ext_resource type="Script" uid="uid://c7goeq4oevd8q" path="res://gameplay/food_spawner.gd" id="1_fxhnt"]
 [ext_resource type="PackedScene" uid="uid://dynti4w2ay8qb" path="res://gameplay/fish_collectable.tscn" id="2_udan0"]
 
 [node name="FoodSpawner" type="Node2D"]

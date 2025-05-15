@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfvpt71ravmij"]
 
-[ext_resource type="Script" path="res://ui/ui.gd" id="1_105e6"]
+[ext_resource type="Script" uid="uid://dcpa42g2vgiuh" path="res://ui/ui.gd" id="1_105e6"]
 [ext_resource type="Theme" uid="uid://dj3yw2o3u5j7y" path="res://ui/bop_theme.tres" id="2_aeq67"]
 [ext_resource type="Texture2D" uid="uid://cpxi6o7tgbygx" path="res://assets/art/upgrades/HealthUpgrade.png" id="2_jux8h"]
 [ext_resource type="Texture2D" uid="uid://57m65lec52tw" path="res://assets/art/upgrades/SpeedUpgrade.png" id="3_i1bp1"]

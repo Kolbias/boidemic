@@ -17,4 +17,3 @@ func _ready():
 		"res://assets/art/Crab.png":
 			add_to_group("crab")
 			resource_value = 15
-

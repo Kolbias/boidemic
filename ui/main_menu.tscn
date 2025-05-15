@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://b05g8uevuvdck"]
 
-[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_2wm4g"]
+[ext_resource type="Script" uid="uid://eb010g4kcwpc" path="res://ui/main_menu.gd" id="1_2wm4g"]
 [ext_resource type="Texture2D" uid="uid://dqt6sj6w7w1gd" path="res://assets/art/tilesets/WaterTileAnimation.png" id="1_u41f5"]
 [ext_resource type="PackedScene" uid="uid://cwk7woe5raexj" path="res://maps/demo_map.tscn" id="3_mg1uv"]
 [ext_resource type="Texture2D" uid="uid://cvaipeqbxdj3u" path="res://assets/art/anim/player/player1.png" id="4_vvl7q"]

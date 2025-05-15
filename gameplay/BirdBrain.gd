@@ -84,30 +84,25 @@ func spawnBoid():
 	boidArray.append(newBoid)
 	newBoid.global_position = nearestIsland + Vector2(randi_range(-100, 100), randi_range(-100, 100))
 	newBoid.global_rotation = Vector2.ZERO.angle_to_point(player.global_position)
-	#print("spawned boid at " + str(nearestIsland))
+	newBoid.spawn = self
 
 func cullBoids():
 	if targetNumBoids < 2:
 		return
 	boidArray.sort_custom(boidSort)
 	while boidArray.size() > targetNumBoids:
-		#print("culled boid")
 		boidArray.back().queue_free()
 		boidArray.pop_back()
 		spawnCooldown = 100 / \
 		boidArray.back().global_position.distance_to(player.global_position)
 
-func boidSort(a : Enemy_Boid, b : Enemy_Boid):
+func boidSort(a: Enemy_Boid, b: Enemy_Boid) -> bool:
 	var pos = player.global_position
-	if a.global_position.distance_to(pos) > b.global_position.distance_to(pos):
-		return false
-	return true
+	return a.global_position.distance_squared_to(pos) < b.global_position.distance_squared_to(pos)
 
 func islandSort(a : Vector2, b : Vector2):
 	var pos = player.global_position
-	if a.distance_to(pos) > b.distance_to(pos):
-		return false
-	return true
+	return a.distance_to(pos) < b.distance_to(pos)
 
 
 func _on_player_ate_boid(boid):
@@ -122,3 +117,9 @@ func _on_player_ate_boid(boid):
 	if PlayerVariables.num_boids == 0:
 		PlayerVariables.victory.emit()
 	print(targetNumBoids)
+
+func get_boids() -> Array:
+	return boidArray.duplicate()
+
+func free_safely():
+		call_deferred("queue_free")

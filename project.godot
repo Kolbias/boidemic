@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Boidemic"
 run/main_scene="res://ui/main_menu.tscn"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
@@ -23,9 +23,17 @@ driver/mix_rate.web=44100
 
 PlayerVariables="*res://gameplay/player_variables.gd"
 
+[dotnet]
+
+project/assembly_name="Boidemic"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/kolby/Desktop/BoidemicPrev.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gdscript_formatter/plugin.cfg")
 
 [gui]
 

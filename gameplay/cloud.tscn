@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ct2vt6rmcl1uv"]
 
-[ext_resource type="Script" path="res://gameplay/cloud.gd" id="1_wdmqw"]
+[ext_resource type="Script" uid="uid://c5gyarnejqy0t" path="res://gameplay/cloud.gd" id="1_wdmqw"]
 [ext_resource type="Texture2D" uid="uid://ctksoeiq3rfpw" path="res://assets/art/Cloud1.png" id="2_lop1k"]
 [ext_resource type="Texture2D" uid="uid://5ceot8gelk3h" path="res://assets/art/Cloud2.png" id="3_h6jqr"]
 [ext_resource type="Texture2D" uid="uid://llg7pgirhmud" path="res://assets/art/Cloud3.png" id="4_vfymx"]
